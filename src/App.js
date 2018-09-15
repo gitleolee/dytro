@@ -23,6 +23,11 @@ class App extends Component {
               a {
                 margin-right: 1rem;
                 text-decoration: none;
+                font-size: 15px;
+              }
+
+              a:hover {
+                color: aqua;
               }
             `}
           >
