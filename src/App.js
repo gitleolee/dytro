@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
-import { css } from 'emotion';
+import React, { Component } from "react";
+import "./App.css";
+import { css } from "emotion";
 
 class App extends Component {
   render() {
@@ -22,6 +22,7 @@ class App extends Component {
             className={css`
               a {
                 margin-right: 1rem;
+                text-decoration: none;
               }
             `}
           >
