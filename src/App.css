@@ -24,26 +24,6 @@
   height: 40px;
 }
 
-.menuBar {
-  margin-left: 800px;
-  padding-top: 12px;
-  background-color: #00b9ed;
-}
-
-.menuBar a {
-  margin-right: 20px;
-  text-decoration: none;
-  font-size: 15px;
-  color: white;
-  background-color: #00b7dc;
-  background: #00b7dc;
-  height: 30px;
-}
-
-.menuBar a:hover {
-  color: aqua;
-}
-
 #selectedMenu {
   color: black;
 }
