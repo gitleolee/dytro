@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import { css } from 'emotion';
+import React, { Component } from "react";
+import { css } from "emotion";
 
 export default class Login extends Component {
   state = {
-    username: '',
-    password: ''
+    username: "",
+    password: "",
+    cpassword: ""
   };
 
   render() {
-    const username = this.state.username;
-    const password = this.state.password;
+    const { username, password, cpassword } = this.state;
 
     return (
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
         }}
       >
         <div
           style={{
-            marginTop: '6rem'
+            marginTop: "6rem"
           }}
           className={css`
             display: flex;
@@ -58,10 +58,20 @@ export default class Login extends Component {
                 this.setState({ password: event.target.value })
               }
             />
+            <br />
+            <input
+              placeholder="Confirm Password"
+              type="password"
+              maxLength={10}
+              value={cpassword}
+              onChange={event =>
+                this.setState({ cpassword: event.target.value })
+              }
+            />
           </div>
           <div>
             <button
-              style={{ marginTop: '1rem', padding: '1rem', fontSize: '1.5rem' }}
+              style={{ marginTop: "1rem", padding: "1rem", fontSize: "1.5rem" }}
               onClick={this.checkIfPasswordIsCorrect}
             >
               Log In!
@@ -73,9 +83,19 @@ export default class Login extends Component {
   }
 
   checkIfPasswordIsCorrect = () => {
-    const { password, username } = this.state;
+    const { password, username, cpassword } = this.state;
 
-    console.log(password);
     console.log(username);
+    console.log(password);
+    console.log(cpassword);
+    if (cpassword == password) {
+      console.log("Same Password");
+      alert("Sucess");
+    } else if (cpassword != password) {
+      console.log("Not Same Password");
+      alert("Not Same Password");
+    } else {
+      alert("Error!");
+    }
   };
 }
