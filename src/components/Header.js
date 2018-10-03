@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { css } from "emotion";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { css } from 'emotion';
+import { Link } from 'react-router-dom';
 
 export default class Header extends Component {
   render() {

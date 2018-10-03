@@ -12,7 +12,8 @@
 
   "env": {
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
 
   "plugins": ["standard", "promise", "react"],
@@ -168,14 +169,8 @@
 
     "standard/object-curly-even-spacing": [2, "either"],
     "standard/array-bracket-even-spacing": [2, "either"],
-    "standard/computed-property-even-spacing": [0, "even"],
+    "standard/computed-property-even-spacing": [2, "even"],
 
     "promise/param-names": 2
-  },
-
-  "settings": {
-    "react": {
-      "version": "latest"
-    }
   }
 }
