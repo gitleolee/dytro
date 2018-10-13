@@ -1,11 +1,11 @@
 /* global localStorage, alert */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import request from 'axios';
-import { URL } from '../../constants';
-import SignupForm from './SignupForm';
-import LoginForm from './LoginForm';
-import { css } from 'emotion';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import request from "axios";
+import { URL } from "../../constants";
+import SignupForm from "./SignupForm";
+import LoginForm from "./LoginForm";
+import { css } from "emotion";
 
 export default class Login extends Component {
   static propTypes = {
@@ -16,9 +16,9 @@ export default class Login extends Component {
   };
 
   state = {
-    usernameInput: '',
-    passwordInput: '',
-    cpasswordInput: '',
+    usernameInput: "",
+    passwordInput: "",
+    cpasswordInput: "",
     signupFormShown: true
   };
 
@@ -40,8 +40,8 @@ export default class Login extends Component {
     return (
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'center'
+          display: "flex",
+          justifyContent: "center"
         }}
       >
         {userId && (
@@ -51,7 +51,7 @@ export default class Login extends Component {
           </div>
         )}
         {!userId && (
-          <div style={{ marginTop: '5rem' }}>
+          <div style={{ marginTop: "5rem" }}>
             <div
               className={css`
                 a {
@@ -62,17 +62,17 @@ export default class Login extends Component {
             >
               {signupFormShown && (
                 <a onClick={() => this.setState({ signupFormShown: false })}>
-                  Wait, I already have an account
+                  I already have an account.
                 </a>
               )}
               {!signupFormShown && (
                 <a
                   onClick={() => this.setState({ signupFormShown: true })}
-                >{`I'm new and I need to sign up for a new account`}</a>
+                >{`I need to create my account.`}</a>
               )}
               <div />
             </div>
-            <div style={{ marginTop: '1rem' }}>
+            <div style={{ marginTop: "1rem" }}>
               {signupFormShown ? (
                 <SignupForm
                   username={usernameInput}
@@ -109,7 +109,7 @@ export default class Login extends Component {
     );
   }
 
-  login = async() => {
+  login = async () => {
     const { onLogin } = this.props;
     const { usernameInput, passwordInput } = this.state;
     try {
@@ -118,7 +118,7 @@ export default class Login extends Component {
       } = await request.get(
         `${URL}/users?username=${usernameInput}&password=${passwordInput}`
       );
-      localStorage.setItem('token', token);
+      localStorage.setItem("token", token);
       onLogin({ userId, username: usernameInput });
     } catch (error) {
       console.error(error);
@@ -127,11 +127,11 @@ export default class Login extends Component {
 
   logout = () => {
     const { onLogout } = this.props;
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     onLogout();
   };
 
-  signup = async() => {
+  signup = async () => {
     const { onLogin } = this.props;
     const { usernameInput, passwordInput, cpasswordInput } = this.state;
     if (
@@ -161,14 +161,14 @@ export default class Login extends Component {
 
           try it!
         */
-        if (alreadyExists) return alert('User already exists');
-        localStorage.setItem('token', token);
+        if (alreadyExists) return alert("User already exists");
+        localStorage.setItem("token", token);
         return onLogin({ userId, username: usernameInput });
       } catch (error) {
         return console.error(error);
       }
     }
-    alert('passwords do not match!');
+    alert("passwords do not match!");
   };
 
   passwordMatches = ({ cpassword, password }) => {

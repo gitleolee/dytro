@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { css } from 'emotion';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { css } from "emotion";
+import { Link } from "react-router-dom";
 
 export default class Header extends Component {
   render() {
+    const { userId } = this.props;
     return (
       <div
         className={css`
@@ -33,6 +34,14 @@ export default class Header extends Component {
         />
         <Link to="/">Home</Link>
         <Link to="/login">Login</Link>
+        {userId && <Link to="/chat">Chat</Link>}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://discord.gg/YPZ3RBy"
+        >
+          Discord
+        </a>
       </div>
     );
   }
