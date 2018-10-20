@@ -1,8 +1,12 @@
-import React, { Component } from "react";
-import { css } from "emotion";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { css } from 'emotion';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default class Header extends Component {
+  static propTypes = {
+    userId: PropTypes.number
+  };
   render() {
     const { userId } = this.props;
     return (

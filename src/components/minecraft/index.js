@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { css } from "emotion";
+import React, { Component } from 'react';
+import { css } from 'emotion';
 
 export default class Minecraft extends Component {
   render() {

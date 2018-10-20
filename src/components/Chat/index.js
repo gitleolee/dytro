@@ -7,7 +7,6 @@ export default class Chat extends Component {
   static propTypes = {
     username: PropTypes.string
   };
-
   state = {
     messages: [
       { username: 'Dytro Network', message: 'This is the start of the site' }
