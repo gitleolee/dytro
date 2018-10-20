@@ -1,12 +1,16 @@
-import React, { Component } from "react";
-import { css } from "emotion";
+import React, { Component } from 'react';
+import { css } from 'emotion';
+import PropTypes from 'prop-types';
 
 export default class Chat extends Component {
+  static propTypes = {
+    username: PropTypes.string
+  };
   state = {
     messages: [
-      { username: "Dytro Network", message: "This is the start of the site" }
+      { username: 'Dytro Network', message: 'This is the start of the site' }
     ],
-    input: ""
+    input: ''
   };
 
   render() {
@@ -49,7 +53,7 @@ export default class Chat extends Component {
                         ]
                       : []
                   ),
-                  input: ""
+                  input: ''
                 };
               });
             }}

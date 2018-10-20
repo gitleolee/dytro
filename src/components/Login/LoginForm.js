@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { css } from "emotion";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { css } from 'emotion';
 
 // You can have one component that works as both Login Form AND Signup Form. There's absolutely no need for there to be two files when one would suffice. Can you merge LoginForm.js and SignupForm.js into one component Leo?
 
@@ -60,7 +60,7 @@ export default class LoginForm extends Component {
         </div>
         <div>
           <button
-            style={{ marginTop: "1rem", padding: "1rem", fontSize: "1.5rem" }}
+            style={{ marginTop: '1rem', padding: '1rem', fontSize: '1.5rem' }}
             onClick={onLogin}
           >
             Log In!
