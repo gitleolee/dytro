@@ -9,5 +9,6 @@ app.use(bodyParser.json({ limit: '5mb' }));
 
 // routers
 app.use('/users', require('./controllers/users'));
+app.use('/posts', require('./controllers/posts'));
 
 module.exports = app;
