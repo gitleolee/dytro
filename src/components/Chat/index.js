@@ -1,13 +1,27 @@
-import React, { Component } from "react";
-import { css } from "emotion";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import request from 'axios';
+import { css } from 'emotion';
 
 export default class Chat extends Component {
+  static propTypes = {
+    username: PropTypes.string
+  };
+
   state = {
     messages: [
-      { username: "Dytro Network", message: "This is the start of the site" }
+      { username: 'Dytro Network', message: 'This is the start of the site' }
     ],
-    input: ""
+    input: ''
   };
+
+  async componentDidMount() {
+    try {
+      await request.get();
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   render() {
     const { username } = this.props;
@@ -49,7 +63,7 @@ export default class Chat extends Component {
                         ]
                       : []
                   ),
-                  input: ""
+                  input: ''
                 };
               });
             }}
