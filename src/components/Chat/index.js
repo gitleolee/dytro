@@ -19,7 +19,7 @@ export default class Chat extends Component {
           <div>
             {messages.map((message, index) => (
               <div key={index}>
-                {message.username}: {message.message}
+                <strong>{message.username}</strong>: {message.message}
               </div>
             ))}
           </div>

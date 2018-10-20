@@ -28,7 +28,7 @@ export default class Header extends Component {
             }
 
             a:hover {
-              color: aqua;
+              text-decoration: none;
             }
           `}
         />
@@ -42,6 +42,7 @@ export default class Header extends Component {
         >
           Discord
         </a>
+        <Link to="/games/minecraft">Minecraft</Link>
       </div>
     );
   }
