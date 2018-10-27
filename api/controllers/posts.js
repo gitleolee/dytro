@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const { requireAuth } = require('../auth');
 const { poolQuery } = require('../helpers');
 
 router.get('/', async(req, res) => {
@@ -14,8 +13,12 @@ router.get('/', async(req, res) => {
   }
 });
 
-router.post('/', requireAuth, async(req, res) => {
-  console.log('came through');
+router.post('/', async(req, res) => {
+  console.log(req.body.text);
+  await poolQuery(`INSERT INTO posts SET ?`, {
+    userId: req.body.userId,
+    message: req.body.text
+  });
   res.send({ success: true });
 });
 

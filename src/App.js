@@ -46,7 +46,7 @@ class App extends Component {
         <Route
           exact
           path="/chat"
-          component={() => <Chat username={username} />}
+          component={() => <Chat username={username} userId={userId} />}
         />
         <Route exact path="/games/minecraft" component={() => <Minecraft />} />
         <Route
