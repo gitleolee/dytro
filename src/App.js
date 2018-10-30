@@ -8,6 +8,7 @@ import Chat from './components/Chat';
 import request from 'axios';
 import { URL } from './constants';
 import Minecraft from './components/minecraft';
+import Developer from './components/Developer';
 
 class App extends Component {
   state = {
@@ -47,6 +48,11 @@ class App extends Component {
           exact
           path="/chat"
           component={() => <Chat username={username} userId={userId} />}
+        />
+        <Route
+          exact
+          path="/developer"
+          component={() => <Developer userId={userId} username={username} />}
         />
         <Route exact path="/games/minecraft" component={() => <Minecraft />} />
         <Route

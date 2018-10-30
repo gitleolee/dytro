@@ -13,12 +13,11 @@ export default class Header extends Component {
       <div
         className={css`
           display: flex;
-          flex-direction: row-reverse;
           align-items: center;
           height: 4rem;
           background: #00b9ed;
           a {
-            margin-right: 1rem;
+            margin-left: 1rem;
             text-decoration: none;
             color: #fff;
           }
