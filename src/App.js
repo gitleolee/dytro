@@ -38,7 +38,7 @@ class App extends Component {
     const { userId, username } = this.state;
     return (
       <div className="App">
-        <Header userId={userId} />
+        <Header userId={userId} username={username} />
         <Route
           exact
           path="/"
