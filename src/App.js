@@ -8,7 +8,10 @@ import Chat from './components/Chat';
 import request from 'axios';
 import { URL } from './constants';
 import Minecraft from './components/minecraft';
+import MinecraftServer from './components/minecraft/Servers';
 import Developer from './components/Developer';
+import JSPlayground from './components/Developer/JavaScriptPlayground';
+import Games from './components/games';
 
 class App extends Component {
   state = {
@@ -51,10 +54,21 @@ class App extends Component {
         />
         <Route
           exact
+          path="/developer/jsplayground"
+          component={() => <JSPlayground />}
+        />
+        <Route
+          exact
           path="/developer"
           component={() => <Developer userId={userId} username={username} />}
         />
         <Route exact path="/games/minecraft" component={() => <Minecraft />} />
+        <Route
+          exact
+          path="/games/minecraft/servers"
+          component={() => <MinecraftServer />}
+        />
+        <Route exact path="/games" component={() => <Games />} />
         <Route
           exact
           path="/login"

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
+import { Link } from 'react-router-dom';
 
 export default class Minecraft extends Component {
   render() {
@@ -22,7 +23,7 @@ export default class Minecraft extends Component {
             }
           `}
         >
-          <a>Servers</a>
+          <Link to="/games/minecraft/servers">Servers</Link>
         </div>
       </div>
     );

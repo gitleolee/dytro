@@ -45,7 +45,7 @@ export default class Header extends Component {
         >
           Discord
         </a>
-        <Link to="/games/minecraft">Minecraft</Link>
+        <Link to="/games">Games</Link>
         <Link to="/developer">Developer</Link>
         <div
           className={css`
@@ -53,16 +53,32 @@ export default class Header extends Component {
             align-items: center;
             height: 4rem;
             background: #00b9ed;
+            flex-direction: row-reverse;
+            width: 100%;
             a {
               margin-left: 1rem;
               margin-right: 0rem;
             }
             .green {
-              color: rgb(0, 255, 0);
+              color: white;
+              background-color: rgb(0, 255, 0);
+              justify-content: center;
+              text-align: center;
+              width: 50px;
+              height: 2rem;
+              border-radius: 5px;
+              padding-top: 0.25rem;
+            }
+            .Last {
+              margin-right: 1rem;
             }
           `}
         >
-          {userId ? <a>{username}</a> : <a>Login to an account</a>}
+          {userId ? (
+            <a className="Last">Welcome, {username}</a>
+          ) : (
+            <a className="Last">Login to an account</a>
+          )}
           {userId ? (
             <Link to="/chat" className="green">
               Talk

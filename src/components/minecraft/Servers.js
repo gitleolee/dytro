@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
 
-export default class Server extends Component {
+export default class MinecraftServer extends Component {
   render() {
     return (
       <div
@@ -15,14 +15,14 @@ export default class Server extends Component {
         <h1>Minecraft Servers</h1>
         <div
           className={css`
-            a {
+            p {
               text-decoration: none;
-              color: aqua;
+              color: rgb(0, 255, 255);
               font-size: 1.5rem;
             }
           `}
         >
-          <a>Servers</a>
+          <p>Hypixel: mc.hypixel.net</p>
         </div>
       </div>
     );
