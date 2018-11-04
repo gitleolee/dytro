@@ -23,16 +23,16 @@ export default class Header extends Component {
             text-decoration: none;
             color: #fff;
           }
+          a:hover {
+            color: aqua;
+            margin-top: 0.1rem;
+          }
         `}
       >
         <div
           className={css`
             a {
               margin-left: 1rem;
-              text-decoration: none;
-            }
-
-            a:hover {
               text-decoration: none;
             }
           `}
@@ -69,8 +69,21 @@ export default class Header extends Component {
               border-radius: 5px;
               padding-top: 0.25rem;
             }
+            .greenLogin {
+              color: white;
+              background-color: rgb(0, 255, 0);
+              justify-content: center;
+              text-align: center;
+              width: 65px;
+              height: 2rem;
+              border-radius: 5px;
+              padding-top: 0.25rem;
+            }
             .Last {
               margin-right: 1rem;
+            }
+            a:hover {
+              color: aqua;
             }
           `}
         >
@@ -84,7 +97,9 @@ export default class Header extends Component {
               Talk
             </Link>
           ) : (
-            <Link to="/login">Login</Link>
+            <Link to="/login" className="greenLogin">
+              Login
+            </Link>
           )}
         </div>
       </div>

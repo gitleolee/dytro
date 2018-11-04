@@ -12,6 +12,7 @@ import MinecraftServer from './components/minecraft/Servers';
 import Developer from './components/Developer';
 import JSPlayground from './components/Developer/JavaScriptPlayground';
 import Games from './components/games';
+import VillagerGen from './components/minecraft/Villager';
 
 class App extends Component {
   state = {
@@ -67,6 +68,11 @@ class App extends Component {
           exact
           path="/games/minecraft/servers"
           component={() => <MinecraftServer />}
+        />
+        <Route
+          exact
+          path="/games/minecraft/villagergen"
+          component={() => <VillagerGen />}
         />
         <Route exact path="/games" component={() => <Games />} />
         <Route

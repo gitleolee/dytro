@@ -18,12 +18,17 @@ export default class Minecraft extends Component {
           className={css`
             a {
               text-decoration: none;
-              color: aqua;
+              color: grey;
               font-size: 1.5rem;
+              margin-left: 3rem;
+            }
+            a:hover {
+              color: aqua;
             }
           `}
         >
           <Link to="/games/minecraft/servers">Servers</Link>
+          <Link to="/games/minecraft/villagergen">Villager Generator</Link>
         </div>
       </div>
     );
