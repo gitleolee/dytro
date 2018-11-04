@@ -21,12 +21,17 @@ export default class VillagerGen extends Component {
         `}
       >
         <h1>Villager Generator</h1>
-        Current Position{' '}
-        <input
-          value={checked}
-          onChange={() => this.setState(state => ({ checked: !state.checked }))}
-          type="checkbox"
-        />
+        <div style={{ display: 'flex' }}>
+          <div>Current Position</div>
+          <input
+            style={{ marginLeft: '0.5rem' }}
+            value={checked}
+            onChange={() =>
+              this.setState(state => ({ checked: !state.checked }))
+            }
+            type="checkbox"
+          />
+        </div>
         <h3 id="Output">
           /summon minecraft:villager {checked ? '1 2 3' : '~ ~ ~'}{' '}
         </h3>
