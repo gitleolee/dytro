@@ -47,6 +47,7 @@ export default class Header extends Component {
         </a>
         <Link to="/games">Games</Link>
         <Link to="/developer">Developer</Link>
+        <Link to="/about">About</Link>
         <div
           className={css`
             display: flex;
@@ -88,7 +89,9 @@ export default class Header extends Component {
           `}
         >
           {userId ? (
-            <a className="Last">Welcome, {username}</a>
+            <a className="Last" id="welcome">
+              Welcome, {username}
+            </a>
           ) : (
             <a className="Last">Login to an account</a>
           )}

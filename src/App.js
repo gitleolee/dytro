@@ -12,7 +12,14 @@ import MinecraftServer from './components/minecraft/Servers';
 import Developer from './components/Developer';
 import JSPlayground from './components/Developer/JavaScriptPlayground';
 import Games from './components/games';
-import VillagerGen from './components/minecraft/Villager';
+import About from './components/about';
+import RGB from './components/Developer/RGB';
+import Math from './components/Math';
+import Average3 from './components/Math/average';
+import TemperatureCoverter from './components/Math/TemperatureConverter';
+import Shiritori from './components/games/Shiritori';
+import Dytins from './components/Dytins';
+import WeightConverter from './components/Math/WeightConverter';
 
 class App extends Component {
   state = {
@@ -48,6 +55,7 @@ class App extends Component {
           path="/"
           component={() => <Home userId={userId} username={username} />}
         />
+        <Route exact path="/dytins" component={() => <Dytins />} />
         <Route
           exact
           path="/chat"
@@ -58,23 +66,33 @@ class App extends Component {
           path="/developer/jsplayground"
           component={() => <JSPlayground />}
         />
+        <Route exact path="/math/average/3" component={() => <Average3 />} />
+        <Route exact path="/developer/rgb" component={() => <RGB />} />
+        <Route exact path="/math" component={() => <Math />} />
+        <Route
+          exact
+          path="/math/temperatureconverter"
+          component={() => <TemperatureCoverter />}
+        />
+        <Route
+          exact
+          path="/math/weightconverter"
+          component={() => <WeightConverter />}
+        />
         <Route
           exact
           path="/developer"
           component={() => <Developer userId={userId} username={username} />}
         />
+        <Route exact path="/about" component={() => <About />} />
         <Route exact path="/games/minecraft" component={() => <Minecraft />} />
         <Route
           exact
           path="/games/minecraft/servers"
           component={() => <MinecraftServer />}
         />
-        <Route
-          exact
-          path="/games/minecraft/villagergen"
-          component={() => <VillagerGen />}
-        />
         <Route exact path="/games" component={() => <Games />} />
+        <Route exact path="/games/shiritori" component={() => <Shiritori />} />
         <Route
           exact
           path="/login"

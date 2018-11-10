@@ -28,7 +28,6 @@ export default class Minecraft extends Component {
           `}
         >
           <Link to="/games/minecraft/servers">Servers</Link>
-          <Link to="/games/minecraft/villagergen">Villager Generator</Link>
         </div>
       </div>
     );

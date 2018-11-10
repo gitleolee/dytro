@@ -13,7 +13,9 @@ export default class Home extends Component {
       <div
         style={{
           display: 'flex',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          flexDirection: 'column',
+          alignItems: 'center'
         }}
       >
         {userId ? (
