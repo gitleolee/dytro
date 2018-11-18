@@ -9,15 +9,6 @@ export default class Average3 extends Component {
   };
   render() {
     const { one, two, three } = this.state;
-    if (isNaN(one)) {
-      this.setState({ one: 0 });
-    }
-    if (isNaN(two)) {
-      this.setState({ two: 0 });
-    }
-    if (isNaN(three)) {
-      this.setState({ three: 0 });
-    }
     return (
       <div
         className={css`

@@ -20,11 +20,13 @@ import TemperatureCoverter from './components/Math/TemperatureConverter';
 import Shiritori from './components/games/Shiritori';
 import Dytins from './components/Dytins';
 import WeightConverter from './components/Math/WeightConverter';
+import Download from './components/Download';
 
 class App extends Component {
   state = {
     userId: undefined,
-    username: ''
+    username: '',
+    dytins: 0
   };
 
   async componentDidMount() {
@@ -46,7 +48,12 @@ class App extends Component {
   }
 
   render() {
-    const { userId, username } = this.state;
+    const { userId, username, dytins } = this.state;
+    console.log(
+      "%cDon't put stuffs that people says so! You might get hacked!",
+      'color: rgb(0,255,0); font-family: Arial; font-size: 1.2rem;'
+    );
+
     return (
       <div className="App">
         <Header userId={userId} username={username} />
@@ -55,7 +62,11 @@ class App extends Component {
           path="/"
           component={() => <Home userId={userId} username={username} />}
         />
-        <Route exact path="/dytins" component={() => <Dytins />} />
+        <Route
+          exact
+          path="/dytins"
+          component={() => <Dytins dytins={dytins} />}
+        />
         <Route
           exact
           path="/chat"
@@ -85,6 +96,7 @@ class App extends Component {
           component={() => <Developer userId={userId} username={username} />}
         />
         <Route exact path="/about" component={() => <About />} />
+        <Route exact path="/downloads" component={() => <Download />} />
         <Route exact path="/games/minecraft" component={() => <Minecraft />} />
         <Route
           exact

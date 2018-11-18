@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
-import { Link } from 'react-router-dom';
 
-export default class Minecraft extends Component {
+export default class Download extends Component {
   render() {
     return (
       <div
@@ -13,21 +12,19 @@ export default class Minecraft extends Component {
           justify-content: center;
         `}
       >
-        <h1>Welcome to the Minecraft Page</h1>
+        <h1>Downloads</h1>
         <div
           className={css`
+            flex-direction: none;
             a {
-              text-decoration: none;
               color: grey;
-              font-size: 1.5rem;
-              margin-left: 1rem;
-            }
-            a:hover {
-              color: aqua;
+              margin-top: 1rem;
+              text-decoration: none;
             }
           `}
         >
-          <Link to="/games/minecraft/servers">Servers</Link>
+          <div>Mods Made By Dytro Downloads</div>
+          <a href="./files/mods/dom-1.7.jar">Dytro Official Mod 1.7</a>
         </div>
       </div>
     );

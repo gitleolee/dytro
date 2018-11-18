@@ -57,8 +57,7 @@ export default class WeightConverter extends Component {
             value={inputS}
             onChange={event =>
               this.setState({
-                inputS: event.target.value,
-                input: Number(inputS)
+                inputS: event.target.value
               })
             }
           />

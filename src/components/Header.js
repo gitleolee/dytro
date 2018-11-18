@@ -81,7 +81,8 @@ export default class Header extends Component {
               padding-top: 0.25rem;
             }
             .Last {
-              margin-right: 1rem;
+              margin-right: 0.5rem;
+              font-size: 0.9rem;
             }
             a:hover {
               color: aqua;
