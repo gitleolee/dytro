@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Chat from './components/Chat';
 import request from 'axios';
+import { socket } from './helpers/requestHelpers';
 import { URL } from './constants';
 import Minecraft from './components/minecraft';
 import MinecraftServer from './components/minecraft/Servers';
@@ -30,6 +31,14 @@ class App extends Component {
   };
 
   async componentDidMount() {
+    // I moved this here because if you put this console.log intto render() method it will run everytime your state changes (which slows down your app slightly)
+    console.log(
+      "%cDon't put stuffs that people says so! You might get hacked!",
+      'color: rgb(0,255,0); font-family: Arial; font-size: 1.2rem;'
+    );
+    socket.on('connect', () => {
+      console.log('connected to socket');
+    });
     const token = localStorage.getItem('token');
     if (token) {
       try {
@@ -49,11 +58,6 @@ class App extends Component {
 
   render() {
     const { userId, username, dytins } = this.state;
-    console.log(
-      "%cDon't put stuffs that people says so! You might get hacked!",
-      'color: rgb(0,255,0); font-family: Arial; font-size: 1.2rem;'
-    );
-
     return (
       <div className="App">
         <Header userId={userId} username={username} />

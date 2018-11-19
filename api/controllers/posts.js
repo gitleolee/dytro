@@ -14,7 +14,6 @@ router.get('/', async(req, res) => {
 });
 
 router.post('/', async(req, res) => {
-  console.log(req.body.text);
   await poolQuery(`INSERT INTO posts SET ?`, {
     userId: req.body.userId,
     message: req.body.text

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import request from 'axios';
 import { URL } from '../../constants';
+import { socket } from '../../helpers/requestHelpers';
 import { css } from 'emotion';
 
 export default class Chat extends Component {
@@ -19,6 +20,9 @@ export default class Chat extends Component {
     } catch (error) {
       console.error(error);
     }
+    socket.on('receive_message', (message, userId) => {
+      console.log(message, userId);
+    });
   }
 
   componentWillUnmount() {
@@ -61,11 +65,12 @@ export default class Chat extends Component {
   }
   onSubmit = async event => {
     const { userId } = this.props;
+    const { input } = this.state;
     event.preventDefault();
-    const { data } = await request.post(`${URL}/posts`, {
-      text: this.state.input,
+    await request.post(`${URL}/posts`, {
+      text: input,
       userId: userId
     });
-    console.log(data);
+    socket.emit('new_chat_message', input, userId);
   };
 }
