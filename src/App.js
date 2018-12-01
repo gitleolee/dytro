@@ -1,6 +1,6 @@
 /* global localStorage */
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -60,65 +60,76 @@ class App extends Component {
     return (
       <div className="App">
         <Header userId={userId} username={username} />
-        <Route
-          exact
-          path="/"
-          component={() => <Home userId={userId} username={username} />}
-        />
-        <Route
-          exact
-          path="/dytins"
-          component={() => <Dytins dytins={dytins} />}
-        />
-        <Route
-          exact
-          path="/chat"
-          component={() => <Chat username={username} userId={userId} />}
-        />
-        <Route exact path="/math/average/3" component={() => <Average3 />} />
-        <Route exact path="/developer/rgb" component={() => <RGB />} />
-        <Route exact path="/math" component={() => <Math />} />
-        <Route
-          exact
-          path="/math/temperatureconverter"
-          component={() => <TemperatureCoverter />}
-        />
-        <Route
-          exact
-          path="/math/weightconverter"
-          component={() => <WeightConverter />}
-        />
-        <Route
-          exact
-          path="/developer"
-          component={() => <Developer userId={userId} username={username} />}
-        />
-        <Route exact path="/about" component={() => <About />} />
-        <Route exact path="/downloads" component={() => <Download />} />
-        <Route exact path="/games/minecraft" component={() => <Minecraft />} />
-        <Route
-          exact
-          path="/games/minecraft/servers"
-          component={() => <MinecraftServer />}
-        />
-        <Route exact path="/games" component={() => <Games />} />
-        <Route exact path="/games/shiritori" component={() => <Shiritori />} />
-        <Route
-          exact
-          path="/login"
-          component={() => (
-            <Login
-              userId={userId}
-              username={username}
-              onLogout={() =>
-                this.setState({ userId: undefined, username: '' })
-              }
-              onLogin={({ userId, username }) =>
-                this.setState({ userId, username })
-              }
-            />
-          )}
-        />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={() => <Home userId={userId} username={username} />}
+          />
+          <Route
+            exact
+            path="/dytins"
+            component={() => <Dytins dytins={dytins} />}
+          />
+          <Route
+            exact
+            path="/chat"
+            component={() => <Chat username={username} userId={userId} />}
+          />
+          <Route exact path="/math/average/3" component={() => <Average3 />} />
+          <Route exact path="/developer/rgb" component={() => <RGB />} />
+          <Route exact path="/math" component={() => <Math />} />
+          <Route
+            exact
+            path="/math/temperatureconverter"
+            component={() => <TemperatureCoverter />}
+          />
+          <Route
+            exact
+            path="/math/weightconverter"
+            component={() => <WeightConverter />}
+          />
+          <Route
+            exact
+            path="/developer"
+            component={() => <Developer userId={userId} username={username} />}
+          />
+          <Route exact path="/about" component={() => <About />} />
+          <Route exact path="/downloads" component={() => <Download />} />
+          <Route
+            exact
+            path="/games/minecraft"
+            component={() => <Minecraft />}
+          />
+          <Route
+            exact
+            path="/games/minecraft/servers"
+            component={() => <MinecraftServer />}
+          />
+          <Route exact path="/games" component={() => <Games />} />
+          <Route
+            exact
+            path="/games/shiritori"
+            component={() => <Shiritori />}
+          />
+          <Route
+            exact
+            path="/login"
+            component={() => (
+              <Login
+                userId={userId}
+                username={username}
+                onLogout={() =>
+                  this.setState({ userId: undefined, username: '' })
+                }
+                onLogin={({ userId, username }) =>
+                  this.setState({ userId, username })
+                }
+              />
+            )}
+          />
+          <Route component={() => <div>Does not exist</div>} />
+        </Switch>
       </div>
     );
   }
