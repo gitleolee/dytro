@@ -28,8 +28,8 @@ export default class Chat extends Component {
     } catch (error) {
       console.error(error);
     }
-    socket.on('receive_message', (message, userId) => {
-      this.addMessage(message, userId);
+    socket.on('receive_message', (message, userId, username) => {
+      this.addMessage(message, userId, username);
     });
   }
 
@@ -80,11 +80,10 @@ export default class Chat extends Component {
       text: input,
       userId: userId
     });
-    socket.emit('new_chat_message', input, userId);
+    socket.emit('new_chat_message', input, userId, this.props.username);
     this.setState({ currentId: data.messageId, input: '' });
   };
-  addMessage = (pmessage, userId) => {
-    const { username } = this.props;
+  addMessage = (pmessage, userId, username) => {
     this.setState({
       messages: this.state.messages.concat({
         id: this.state.currentId,

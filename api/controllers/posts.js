@@ -18,7 +18,10 @@ router.post('/', async(req, res) => {
     userId: req.body.userId,
     message: req.body.text
   });
-  res.send({ success: true, messageId: result.insertId });
+  res.send({
+    success: true,
+    messageId: result.insertId
+  });
 });
 
 module.exports = router;

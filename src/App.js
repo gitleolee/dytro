@@ -21,6 +21,7 @@ import Shiritori from './components/games/Shiritori';
 import Dytins from './components/Dytins';
 import WeightConverter from './components/Math/WeightConverter';
 import Download from './components/Download';
+import PageNotExisting from './components/SiteUtils/PageNotExisting';
 
 class App extends Component {
   state = {
@@ -128,7 +129,7 @@ class App extends Component {
               />
             )}
           />
-          <Route component={() => <div>Does not exist</div>} />
+          <Route component={() => <PageNotExisting />} />
         </Switch>
       </div>
     );
