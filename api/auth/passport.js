@@ -8,7 +8,7 @@ const { poolQuery } = require('../helpers');
 const localOptions = {};
 
 const query = `
-  SELECT id, username, password FROM users WHERE
+  SELECT id, username, password, dytins FROM users WHERE
 `;
 
 const localLogin = new LocalStrategy(

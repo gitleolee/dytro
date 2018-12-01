@@ -14,11 +14,11 @@ router.get('/', async(req, res) => {
 });
 
 router.post('/', async(req, res) => {
-  await poolQuery(`INSERT INTO posts SET ?`, {
+  const result = await poolQuery(`INSERT INTO posts SET ?`, {
     userId: req.body.userId,
     message: req.body.text
   });
-  res.send({ success: true });
+  res.send({ success: true, messageId: result.insertId });
 });
 
 module.exports = router;

@@ -11,7 +11,6 @@ import { URL } from './constants';
 import Minecraft from './components/minecraft';
 import MinecraftServer from './components/minecraft/Servers';
 import Developer from './components/Developer';
-import JSPlayground from './components/Developer/JavaScriptPlayground';
 import Games from './components/games';
 import About from './components/about';
 import RGB from './components/Developer/RGB';
@@ -43,13 +42,13 @@ class App extends Component {
     if (token) {
       try {
         const {
-          data: { userId, username }
+          data: { userId, username, dytins }
         } = await request.get(`${URL}/users/session`, {
           headers: {
             authorization: token
           }
         });
-        this.setState({ userId, username });
+        this.setState({ userId, username, dytins });
       } catch (error) {
         console.error(error);
       }
@@ -75,11 +74,6 @@ class App extends Component {
           exact
           path="/chat"
           component={() => <Chat username={username} userId={userId} />}
-        />
-        <Route
-          exact
-          path="/developer/jsplayground"
-          component={() => <JSPlayground />}
         />
         <Route exact path="/math/average/3" component={() => <Average3 />} />
         <Route exact path="/developer/rgb" component={() => <RGB />} />

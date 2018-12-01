@@ -36,7 +36,7 @@ router.post('/', async(req, res) => {
 
 router.get('/session', requireAuth, async(req, res) => {
   const { user } = req;
-  res.send({ userId: user.id, username: user.username });
+  res.send({ userId: user.id, username: user.username, dytins: user.dytins });
 });
 
 module.exports = router;

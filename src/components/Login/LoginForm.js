@@ -33,7 +33,6 @@ export default class LoginForm extends Component {
           justify-content: center;
           height: 500px;
           width: 400px;
-          background-color: aqua;
           border-radius: 25px;
           input {
             width: 20rem;
