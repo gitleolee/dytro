@@ -6,10 +6,15 @@ import PropTypes from 'prop-types';
 export default class Header extends Component {
   static propTypes = {
     userId: PropTypes.number,
-    username: PropTypes.string
+    username: PropTypes.string,
+    onLogout: PropTypes.func.isRequired
+  };
+  state = {
+    profileInfo: true
   };
   render() {
     const { userId, username } = this.props;
+    const { profileInfo } = this.state;
     return (
       <div
         className={css`
@@ -65,9 +70,9 @@ export default class Header extends Component {
               background-color: rgb(0, 255, 0);
               justify-content: center;
               text-align: center;
-              width: 50px;
+              width: 3rem;
               height: 2rem;
-              border-radius: 5px;
+              border-radius: 0.5rem;
               padding-top: 0.25rem;
             }
             .greenLogin {
@@ -75,9 +80,9 @@ export default class Header extends Component {
               background-color: rgb(0, 255, 0);
               justify-content: center;
               text-align: center;
-              width: 65px;
+              width: 4rem;
               height: 2rem;
-              border-radius: 5px;
+              border-radius: 0.5rem;
               padding-top: 0.25rem;
             }
             .Last {
@@ -87,15 +92,45 @@ export default class Header extends Component {
             a:hover {
               color: aqua;
             }
+            .Logout {
+              border-radius: 0px;
+              width: 8rem;
+              margin-top: 5.5rem;
+              font-size: 1rem;
+              text-align: center;
+              background: rgb(237, 251, 250);
+              height: 2.5rem;
+              color: rgb(85, 85, 85);
+            }
+            #welcome {
+              color: black;
+            }
+            .Logout:hover {
+              background-color: rgb(218, 227, 224);
+              margin-top: 5.5rem;
+              color: rgb(85, 85, 85);
+            }
           `}
         >
-          {userId ? (
-            <a className="Last" id="welcome">
-              Welcome, {username}
-            </a>
-          ) : (
-            <a className="Last">Login to an account</a>
-          )}
+          <div
+            className={css`
+              display: flex;
+              flex-direction: column;
+            `}
+          >
+            {userId ? (
+              <a className="Last" id="welcome">
+                Welcome, {username}
+              </a>
+            ) : (
+              <a className="Last">Login to an account</a>
+            )}
+            {userId && profileInfo && (
+              <div className="Logout" onClick={this.logout}>
+                Log out
+              </div>
+            )}
+          </div>
           {userId ? (
             <Link to="/chat" className="green">
               Talk
@@ -109,4 +144,9 @@ export default class Header extends Component {
       </div>
     );
   }
+  logout = () => {
+    const { onLogout } = this.props;
+    localStorage.removeItem('token');
+    onLogout();
+  };
 }

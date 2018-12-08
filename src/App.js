@@ -59,8 +59,12 @@ class App extends Component {
   render() {
     const { userId, username, dytins } = this.state;
     return (
-      <div className="App">
-        <Header userId={userId} username={username} />
+      <div className="App" style={{ background: 'white' }}>
+        <Header
+          userId={userId}
+          username={username}
+          onLogout={() => this.setState({ userId: undefined, username: '' })}
+        />
         <Switch>
           <Route
             exact

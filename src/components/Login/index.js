@@ -41,7 +41,9 @@ export default class Login extends Component {
       <div
         style={{
           display: 'flex',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          height: 'auto',
+          overflow: 'hidden'
         }}
       >
         {userId && (
@@ -55,20 +57,40 @@ export default class Login extends Component {
             <div
               className={css`
                 a {
-                  color: blue;
                   cursor: pointer;
+                  border-radius: 5%;
+                }
+                .another-account {
+                  color: lime;
+                }
+                .make-account {
+                  color: orange;
+                }
+                .another-account:hover {
+                  background: lime;
+                  color: white;
+                }
+                .make-account:hover {
+                  background: orange;
+                  color: white;
                 }
               `}
             >
               {signupFormShown && (
-                <a onClick={() => this.setState({ signupFormShown: false })}>
-                  I already have an account.
+                <a
+                  className="another-account"
+                  onClick={() => this.setState({ signupFormShown: false })}
+                >
+                  <strong>Login To An Account!</strong>
                 </a>
               )}
               {!signupFormShown && (
                 <a
+                  className="make-account"
                   onClick={() => this.setState({ signupFormShown: true })}
-                >{`I need to create my account.`}</a>
+                >
+                  <strong>Create New Account!</strong>
+                </a>
               )}
               <div />
             </div>

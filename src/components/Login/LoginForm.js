@@ -31,9 +31,10 @@ export default class LoginForm extends Component {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          height: 500px;
-          width: 400px;
-          border-radius: 25px;
+          height: 30rem;
+          width: 22rem;
+          border-radius: 0.25rem;
+          background-color: gray;
           input {
             width: 20rem;
             height: 25px;
