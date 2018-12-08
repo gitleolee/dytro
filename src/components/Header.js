@@ -126,7 +126,16 @@ export default class Header extends Component {
               <a className="Last">Login to an account</a>
             )}
             {userId && profileInfo && (
-              <div className="Logout" onClick={this.logout}>
+              <div
+                className="Logout"
+                style={{
+                  height: '3rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+                onClick={this.logout}
+              >
                 Log out
               </div>
             )}
