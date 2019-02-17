@@ -5,17 +5,17 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
-    "cors": "^2.8.4",
-    "emotion": "^9.2.8",
-    "eslint": "^5.6.0",
-    "eslint-config-4catalyzer-react": "^0.4.4",
-    "eslint-loader": "^2.1.1",
-    "eslint-plugin-flowtype": "^2.50.3",
-    "eslint-plugin-import": "^2.14.0",
+    "cors": "^2.8.5",
+    "emotion": "^10.0.7",
+    "eslint": "^5.14.0",
+    "eslint-config-4catalyzer-react": "^0.8.3",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-flowtype": "^3.4.2",
+    "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-standard": "^4.0.0",
-    "express": "^4.16.3",
+    "express": "^4.16.4",
     "jwt-simple": "^0.5.5",
     "morgan": "^1.9.1",
     "mysql": "^2.16.0",
@@ -24,14 +24,14 @@
     "passport-local": "^1.0.0",
     "password-hash": "^1.2.2",
     "path": "^0.12.7",
-    "prop-types": "^15.6.2",
-    "react": "^16.5.1",
-    "react-dom": "^16.5.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5",
-    "socket.io": "^2.1.1",
-    "socket.io-client": "^2.1.1"
+    "react-scripts": "2.1.5",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,5 +43,11 @@
     "stop-api-server": "sudo forever stop api/index.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

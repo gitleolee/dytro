@@ -140,6 +140,7 @@ export default class Login extends Component {
       } = await request.get(
         `${URL}/users?username=${usernameInput}&password=${passwordInput}`
       );
+      console.log(token);
       localStorage.setItem('token', token);
       onLogin({ userId, username: usernameInput });
     } catch (error) {
