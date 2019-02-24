@@ -22,6 +22,9 @@ export default class Header extends Component {
           align-items: center;
           height: 4rem;
           background: #00b9ed;
+          position: fixed;
+          width: 100%;
+          top: 0;
           a {
             margin-left: 1rem;
             font-size: 1.5rem;

@@ -54,10 +54,10 @@ export default class About extends Component {
           <p>
             He started <a href="https://www.scratch.com">Scratch</a> when he was
             8 years old(9 years old in Korean). Then, he started to learn
-            HTML(HyperText Markup Language) and CSS(Used to style stuff). Then,
-            he had learned JavaScript. He went to another programming class, and
-            he learned Java(Programming Language that Minecraft is made with).
-            He also learned C(Programming Language) there too.
+            HTML(HyperText Markup Language) and CSS(Cascading Style Sheet).
+            Then, he had learned JavaScript. He went to another programming
+            class, and he learned Java(Programming Language that Minecraft is
+            made with). He also learned C(Programming Language) there too.
           </p>
         </div>
       </div>
