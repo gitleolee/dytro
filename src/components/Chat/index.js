@@ -39,9 +39,33 @@ export default class Chat extends Component {
 
   render() {
     const { messages, input } = this.state;
+    if (!this.props.username) {
+      return (
+        <div
+          className={css`
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          `}
+        >
+          <h1>You are not logged in! Login to chat!</h1>
+        </div>
+      );
+    }
     return (
       <div>
-        <p>This is Chat :D</p>
+        <div
+          className={css`
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: gray;
+          `}
+        >
+          Chat Starts Here!
+        </div>
         <div id="chatlogs">
           <div>
             {messages.map((message, index) => (
@@ -80,6 +104,18 @@ export default class Chat extends Component {
       text: input,
       userId: userId
     });
+    if (input === '') {
+      return;
+    }
+    let flag = false;
+    for (let index = 0; index < input.length; index++) {
+      if (input[index] !== ' ') {
+        flag = true;
+      }
+    }
+    if (!flag) {
+      return;
+    }
     socket.emit('new_chat_message', input, userId, this.props.username);
     this.setState({ currentId: data.messageId, input: '' });
   };

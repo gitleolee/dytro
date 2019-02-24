@@ -1,5 +1,4 @@
-/* global localStorage */
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -23,129 +22,116 @@ import WeightConverter from './components/Math/WeightConverter';
 import Download from './components/Download';
 import PageNotExisting from './components/SiteUtils/PageNotExisting';
 
-class App extends Component {
-  state = {
-    userId: undefined,
-    username: '',
-    dytins: 0
-  };
+export default function App() {
+  const [userId, setUserId] = useState(undefined);
+  const [username, setUsername] = useState('');
+  const [dytins, setDytins] = useState(0);
 
-  async componentDidMount() {
-    // I moved this here because if you put this console.log intto render() method it will run everytime your state changes (which slows down your app slightly)
+  useEffect(() => {
+    initSession();
     console.log(
       "%cDon't put stuffs that people says so! You might get hacked!",
       'color: rgb(0,255,0); font-family: Arial; font-size: 1.2rem;'
     );
-    socket.on('connect', () => {
-      console.log('connected to socket');
-    });
-    const token = localStorage.getItem('token');
-    if (token) {
-      try {
-        const {
-          data: { userId, username, dytins }
-        } = await request.get(`${URL}/users/session`, {
-          headers: {
-            authorization: token
-          }
-        });
-        this.setState({ userId, username, dytins });
-      } catch (error) {
-        console.error(error);
+    async function initSession() {
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          const {
+            data: { userId, username, dytins }
+          } = await request.get(`${URL}/users/session`, {
+            headers: {
+              authorization: token
+            }
+          });
+          setUserId(userId);
+          setUsername(username);
+          setDytins(dytins);
+        } catch (error) {
+          console.error(error);
+        }
       }
     }
-  }
+  }, []);
 
-  render() {
-    const { userId, username, dytins } = this.state;
-    return (
-      <div className="App" style={{ background: 'white' }}>
-        <Header
-          userId={userId}
-          username={username}
-          onLogout={() => this.setState({ userId: undefined, username: '' })}
+  useEffect(() => {
+    socket.on('connect', socketConnectMessage);
+
+    return () => socket.removeListener('connect', socketConnectMessage);
+    function socketConnectMessage() {
+      console.log('connected to socket');
+    }
+  });
+
+  return (
+    <div className="App" style={{ background: 'white', marginTop: '4rem' }}>
+      <Header userId={userId} username={username} onLogout={logout} />
+      <Switch>
+        <Route
+          exact
+          path="/"
+          component={() => <Home userId={userId} dytins={dytins} />}
         />
-        <div style={{ marginTop: '4rem' }}>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              component={() => <Home userId={userId} username={username} />}
+        <Route
+          exact
+          path="/dytins"
+          component={() => <Dytins dytins={dytins} />}
+        />
+        <Route
+          exact
+          path="/chat"
+          component={() => <Chat username={username} userId={userId} />}
+        />
+        <Route exact path="/math/average/3" component={() => <Average3 />} />
+        <Route exact path="/developer/rgb" component={() => <RGB />} />
+        <Route exact path="/math" component={() => <Math />} />
+        <Route
+          exact
+          path="/math/temperatureconverter"
+          component={() => <TemperatureCoverter />}
+        />
+        <Route
+          exact
+          path="/math/weightconverter"
+          component={() => <WeightConverter />}
+        />
+        <Route
+          exact
+          path="/developer"
+          component={() => <Developer userId={userId} username={username} />}
+        />
+        <Route exact path="/about" component={() => <About />} />
+        <Route exact path="/downloads" component={() => <Download />} />
+        <Route exact path="/games/minecraft" component={() => <Minecraft />} />
+        <Route
+          exact
+          path="/games/minecraft/servers"
+          component={() => <MinecraftServer />}
+        />
+        <Route exact path="/games" component={() => <Games />} />
+        <Route exact path="/games/shiritori" component={() => <Shiritori />} />
+        <Route
+          exact
+          path="/login"
+          component={() => (
+            <Login
+              userId={userId}
+              username={username}
+              onLogout={logout}
+              onLogin={({ userId, username }) => {
+                setUserId(userId);
+                setUsername(username);
+              }}
             />
-            <Route
-              exact
-              path="/dytins"
-              component={() => <Dytins dytins={dytins} />}
-            />
-            <Route
-              exact
-              path="/chat"
-              component={() => <Chat username={username} userId={userId} />}
-            />
-            <Route
-              exact
-              path="/math/average/3"
-              component={() => <Average3 />}
-            />
-            <Route exact path="/developer/rgb" component={() => <RGB />} />
-            <Route exact path="/math" component={() => <Math />} />
-            <Route
-              exact
-              path="/math/temperatureconverter"
-              component={() => <TemperatureCoverter />}
-            />
-            <Route
-              exact
-              path="/math/weightconverter"
-              component={() => <WeightConverter />}
-            />
-            <Route
-              exact
-              path="/developer"
-              component={() => (
-                <Developer userId={userId} username={username} />
-              )}
-            />
-            <Route exact path="/about" component={() => <About />} />
-            <Route exact path="/downloads" component={() => <Download />} />
-            <Route
-              exact
-              path="/games/minecraft"
-              component={() => <Minecraft />}
-            />
-            <Route
-              exact
-              path="/games/minecraft/servers"
-              component={() => <MinecraftServer />}
-            />
-            <Route exact path="/games" component={() => <Games />} />
-            <Route
-              exact
-              path="/games/shiritori"
-              component={() => <Shiritori />}
-            />
-            <Route
-              exact
-              path="/login"
-              component={() => (
-                <Login
-                  userId={userId}
-                  username={username}
-                  onLogout={() =>
-                    this.setState({ userId: undefined, username: '' })
-                  }
-                  onLogin={({ userId, username }) =>
-                    this.setState({ userId, username })
-                  }
-                />
-              )}
-            />
-            <Route component={() => <PageNotExisting />} />
-          </Switch>
-        </div>
-      </div>
-    );
+          )}
+        />
+        <Route component={() => <PageNotExisting />} />
+      </Switch>
+    </div>
+  );
+
+  function logout() {
+    setUserId(undefined);
+    setUsername('');
   }
 }
-
-export default App;

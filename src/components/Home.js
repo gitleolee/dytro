@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 export default class Home extends Component {
   static propTypes = {
-    userId: PropTypes.number,
-    username: PropTypes.string
+    dytins: PropTypes.number,
+    userId: PropTypes.number
   };
 
   render() {
-    const { userId, username } = this.props;
+    const { dytins, userId } = this.props;
     return (
       <div
         style={{
@@ -18,11 +18,8 @@ export default class Home extends Component {
           alignItems: 'center'
         }}
       >
-        {userId ? (
-          <div>Hello, {username}</div>
-        ) : (
-          <div>You are not logged in</div>
-        )}
+        <h1>Check out the wonders of math, science, and literature</h1>
+        {userId && <div>You have {this.props.dytins} dytins</div>}
       </div>
     );
   }

@@ -43,7 +43,8 @@ export default class Login extends Component {
           display: 'flex',
           justifyContent: 'center',
           height: 'auto',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          background: `${URL}/images/ChannelLogo1.png`
         }}
       >
         {userId && (
@@ -140,6 +141,7 @@ export default class Login extends Component {
       } = await request.get(
         `${URL}/users?username=${usernameInput}&password=${passwordInput}`
       );
+      console.log(token);
       localStorage.setItem('token', token);
       onLogin({ userId, username: usernameInput });
     } catch (error) {
