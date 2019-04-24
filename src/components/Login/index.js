@@ -43,8 +43,7 @@ export default class Login extends Component {
           display: 'flex',
           justifyContent: 'center',
           height: 'auto',
-          overflow: 'hidden',
-          background: `${URL}/images/ChannelLogo1.png`
+          overflow: 'hidden'
         }}
       >
         {userId && (
@@ -158,6 +157,13 @@ export default class Login extends Component {
   signup = async() => {
     const { onLogin } = this.props;
     const { usernameInput, passwordInput, cpasswordInput } = this.state;
+    if (usernameInput.length < 3) {
+      alert('Username have to be at least 3 characters');
+      return;
+    } else if (usernameInput.length > 20) {
+      alert('Username is too long!');
+      return;
+    }
     if (
       this.passwordMatches({
         cpassword: cpasswordInput,

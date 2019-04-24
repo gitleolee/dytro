@@ -37,7 +37,6 @@ export default class SignupForm extends React.Component {
           justify-content: center;
           height: 30rem;
           width: 22rem;
-          background-color: gray;
           border-radius: 0.25rem;
           input {
             width: 20rem;

@@ -2,23 +2,27 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 DropdownButton.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  username: PropTypes.string
 };
 
-export default function DropdownButton({ onClick }) {
+export default function DropdownButton({ onClick, username }) {
   const [menuShown, setMenuShown] = useState(false);
   return (
     <div style={{ position: 'relative' }}>
       <div
         style={{
           cursor: 'pointer',
-          background: '#fff',
+          background: 'none',
           padding: '1rem',
-          textAlign: 'center'
+          textAlign: 'center',
+          marginRight: '1.2rem',
+          color: 'rgba(51,51,51,0.5)'
         }}
-        onClick={() => setMenuShown(!menuShown)}
+        onMouseEnter={() => setMenuShown(true)}
+        onMouseLeave={() => setMenuShown(false)}
       >
-        Menu
+        {username}
       </div>
       {menuShown && (
         <div
@@ -26,11 +30,12 @@ export default function DropdownButton({ onClick }) {
           style={{
             cursor: 'pointer',
             position: 'absolute',
-            marginTop: '1rem',
+            marginTop: '0.5rem',
             height: '3rem',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            color: 'gray'
           }}
           onClick={onClick}
         >

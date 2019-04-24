@@ -119,14 +119,10 @@ export default function Header({ onLogout, userId, username }) {
             flex-direction: column;
           `}
         >
-          {userId ? (
-            <a className="Last" id="welcome">
-              Welcome, {username}
-            </a>
-          ) : (
-            <a className="Last">Login to an account</a>
+          {!userId && <a className="Last">Login to an account</a>}
+          {userId && profileInfo && (
+            <DropdownButton onClick={logout} username={username} />
           )}
-          {userId && profileInfo && <DropdownButton onClick={logout} />}
         </div>
         {userId ? (
           <Link to="/chat" className="green">
