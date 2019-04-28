@@ -11,6 +11,8 @@ export default class Home extends Component {
 
   render() {
     const { dytins, userId } = this.props;
+    if (dytins) {
+    }
     return (
       <div
         style={{
@@ -35,7 +37,7 @@ export default class Home extends Component {
       >
         <h1>Check out the wonders of math, science, and literature</h1>
         {userId && <div>You have {this.props.dytins} dytins</div>}
-        {dytins && (
+        {userId && (
           <Link to="/dytins">What are Dytins? Find out what Dytins are!</Link>
         )}
       </div>

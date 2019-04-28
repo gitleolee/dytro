@@ -9,7 +9,11 @@ DropdownButton.propTypes = {
 export default function DropdownButton({ onClick, username }) {
   const [menuShown, setMenuShown] = useState(false);
   return (
-    <div style={{ position: 'relative' }}>
+    <div
+      style={{ position: 'relative' }}
+      onMouseEnter={() => setMenuShown(true)}
+      onMouseLeave={() => setMenuShown(false)}
+    >
       <div
         style={{
           cursor: 'pointer',
@@ -17,10 +21,10 @@ export default function DropdownButton({ onClick, username }) {
           padding: '1rem',
           textAlign: 'center',
           marginRight: '1.2rem',
+          marginTop: '0.6rem',
+          fontSize: '1.2rem',
           color: 'rgba(51,51,51,0.5)'
         }}
-        onMouseEnter={() => setMenuShown(true)}
-        onMouseLeave={() => setMenuShown(false)}
       >
         {username}
       </div>
@@ -30,7 +34,7 @@ export default function DropdownButton({ onClick, username }) {
           style={{
             cursor: 'pointer',
             position: 'absolute',
-            marginTop: '0.5rem',
+            marginTop: '0rem',
             height: '3rem',
             display: 'flex',
             alignItems: 'center',

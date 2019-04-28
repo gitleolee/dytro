@@ -9,7 +9,8 @@ export default class Chat extends Component {
   mounted = false;
 
   static propTypes = {
-    username: PropTypes.string
+    username: PropTypes.string,
+    userId: PropTypes.number
   };
 
   state = {

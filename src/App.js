@@ -16,11 +16,11 @@ import RGB from './components/Developer/RGB';
 import Math from './components/Math';
 import Average3 from './components/Math/average';
 import TemperatureCoverter from './components/Math/TemperatureConverter';
-import Shiritori from './components/games/Shiritori';
 import Dytins from './components/Dytins';
 import WeightConverter from './components/Math/WeightConverter';
 import Download from './components/Download';
 import PageNotExisting from './components/SiteUtils/PageNotExisting';
+import HigherOrLower from './components/games/higherorlower';
 
 export default function App() {
   const [userId, setUserId] = useState(undefined);
@@ -62,7 +62,6 @@ export default function App() {
       console.log('connected to socket');
     }
   });
-
   return (
     <div className="App" style={{ background: 'white', marginTop: '4rem' }}>
       <Header userId={userId} username={username} onLogout={logout} />
@@ -75,7 +74,7 @@ export default function App() {
         <Route
           exact
           path="/dytins"
-          component={() => <Dytins dytins={dytins} />}
+          component={() => <Dytins dytins={dytins} userId={userId} />}
         />
         <Route
           exact
@@ -85,6 +84,11 @@ export default function App() {
         <Route exact path="/math/average/3" component={() => <Average3 />} />
         <Route exact path="/developer/rgb" component={() => <RGB />} />
         <Route exact path="/math" component={() => <Math />} />
+        <Route
+          exact
+          path="/games/higherorlower"
+          component={() => <HigherOrLower />}
+        />
         <Route
           exact
           path="/math/temperatureconverter"
@@ -109,7 +113,6 @@ export default function App() {
           component={() => <MinecraftServer />}
         />
         <Route exact path="/games" component={() => <Games />} />
-        <Route exact path="/games/shiritori" component={() => <Shiritori />} />
         <Route
           exact
           path="/login"

@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 
 export default class Dytins extends Component {
   static propTypes = {
-    dytins: PropTypes.number
+    dytins: PropTypes.number,
+    userId: PropTypes.number
   };
   render() {
-    const { dytins } = this.props;
+    const { dytins, userId } = this.props;
     return (
       <div
         className={css`
@@ -31,7 +32,7 @@ export default class Dytins extends Component {
           </li>
           <li>Dytins can be used to customize your profile.</li>
         </ul>
-        <p>You have {dytins} Dytins.</p>
+        {userId && <p>You have {dytins} Dytins.</p>}
       </div>
     );
   }
