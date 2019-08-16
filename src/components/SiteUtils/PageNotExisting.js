@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React, { Component } from 'react';
 import { css } from 'emotion';
 import { Link } from 'react-router-dom';
@@ -22,8 +24,8 @@ export default class PageNotExisting extends Component {
           }
         `}
       >
-        <h1>Page Does Not Exist!</h1>
-        <Link to="/">Go back to Home</Link>
+        <h1>Page Not Found</h1>
+        <Link to="/">We can't find the page you requested. Click to go to the homepage</Link>
       </div>
     );
   }

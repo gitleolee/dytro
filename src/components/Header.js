@@ -12,14 +12,13 @@ Header.propTypes = {
 
 export default function Header({ onLogout, userId, username }) {
   const [profileInfo] = useState(true);
-
   return (
     <div
       className={css`
         display: flex;
         align-items: center;
         height: 4rem;
-        background: #00b9ed;
+        background: rgb(50,50,50);
         position: fixed;
         width: 100%;
         top: 0;
@@ -59,7 +58,7 @@ export default function Header({ onLogout, userId, username }) {
           display: flex;
           align-items: center;
           height: 4rem;
-          background: #00b9ed;
+          background: rgb(50,50,50);
           flex-direction: row-reverse;
           width: 100%;
           a {

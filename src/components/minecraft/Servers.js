@@ -17,7 +17,7 @@ export default class MinecraftServer extends Component {
           className={css`
             p {
               text-decoration: none;
-              color: rgb(0, 255, 255);
+              color: grey;
               font-size: 1.5rem;
             }
           `}
