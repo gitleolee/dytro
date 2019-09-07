@@ -11,11 +11,11 @@ export default function ProfileLoader({ id, pictureId }) {
     const mounted = useRef(null);
     const [userData, setUserData] = useState([]);
 
-    useEffect(() =>  {
+    useEffect(() => {
         mounted.current = true;
         runWhenMounted();
         async function runWhenMounted() {
-            this.mounted = true;
+            mounted.current = true;
             try {
               const { data: dataOfUser } = await request.get(`${URL}/users`);
               if (this.mounted) {
