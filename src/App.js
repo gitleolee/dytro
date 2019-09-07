@@ -13,6 +13,7 @@ import Developer from './components/Developer';
 import Games from './components/games';
 import About from './components/about';
 import RGB from './components/Developer/RGB';
+import Profile from './components/Profile';
 import Math from './components/Math';
 import Average3 from './components/Math/average';
 import TemperatureCoverter from './components/Math/TemperatureConverter';
@@ -80,6 +81,11 @@ export default function App() {
           exact
           path="/chat"
           component={() => <Chat username={username} userId={userId} />}
+        />
+        <Route
+          exact
+          path="/profile"
+          component={() => <Profile />}
         />
         <Route exact path="/math/average/3" component={() => <Average3 />} />
         <Route exact path="/developer/rgb" component={() => <RGB />} />
