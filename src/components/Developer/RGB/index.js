@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
+import Color from '../../SiteUtils/Color';
 
 export default class RGB extends Component {
   state = {
@@ -71,6 +72,7 @@ export default class RGB extends Component {
             value={blue}
           />
         </div>
+        <Color red={red} green={green} blue={blue}/>
       </div>
     );
   }
