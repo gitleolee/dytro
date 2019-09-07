@@ -18,7 +18,7 @@ export default function ProfileLoader({ id, pictureId }) {
             mounted.current = true;
             try {
               const { data: dataOfUser } = await request.get(`${URL}/users`);
-              if (this.mounted) {
+              if (mounted.current) {
                 setUserData({userData: dataOfUser});
               }
             } catch (error) {
