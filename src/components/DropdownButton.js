@@ -8,6 +8,7 @@ DropdownButton.propTypes = {
 
 export default function DropdownButton({ onClick, username }) {
   const [menuShown, setMenuShown] = useState(false);
+  let colorUser = menuShown ? 'aqua' : 'white';
   return (
     <div
       style={{ position: 'relative' }}
@@ -23,7 +24,7 @@ export default function DropdownButton({ onClick, username }) {
           marginRight: '1.2rem',
           marginTop: '0.6rem',
           fontSize: '1.2rem',
-          color: 'rgba(51,51,51,0.5)'
+          color: colorUser
         }}
       >
         {username}

@@ -22,7 +22,6 @@ import WeightConverter from './components/Math/WeightConverter';
 import Download from './components/Download';
 import PageNotExisting from './components/SiteUtils/PageNotExisting';
 import HigherOrLower from './components/games/higherorlower';
-
 export default function App() {
   const [userId, setUserId] = useState(undefined);
   const [username, setUsername] = useState('');
@@ -85,7 +84,7 @@ export default function App() {
         <Route
           exact
           path="/profile"
-          component={() => <Profile />}
+          component={() => <Profile username={username} />}
         />
         <Route exact path="/math/average/3" component={() => <Average3 />} />
         <Route exact path="/developer/rgb" component={() => <RGB />} />

@@ -63,6 +63,7 @@ export default class Chat extends Component {
             align-items: center;
             justify-content: center;
             color: gray;
+            font-size: 2.4rem;
           `}
         >
           Chat Starts Here!
@@ -70,7 +71,9 @@ export default class Chat extends Component {
         <div id="chatlogs">
           <div>
             {messages.map((message, index) => (
-              <div key={message.id}>
+              <div key={message.id} style={{
+                marginLeft: '50rem'
+              }}>
                 <strong>{message.username}</strong>: {message.message}
               </div>
             ))}
@@ -90,6 +93,9 @@ export default class Chat extends Component {
             <input
               onChange={event => this.setState({ input: event.target.value })}
               value={input}
+              style={{
+                marginLeft: '50rem'
+              }}
               placeholder="Enter a message"
             />
           </form>

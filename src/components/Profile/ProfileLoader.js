@@ -1,35 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { request } from 'axios';
 
 ProfileLoader.propTypes = {
     id: PropTypes.number,
-    pictureId: PropTypes.string
+    pictureId: PropTypes.string,
+    username: PropTypes.string
 };
 
-export default function ProfileLoader({ id, pictureId }) {
-    const mounted = useRef(null);
-    const [userData, setUserData] = useState([]);
-
-    useEffect(() => {
-        mounted.current = true;
-        runWhenMounted();
-        async function runWhenMounted() {
-            mounted.current = true;
-            try {
-              const { data: dataOfUser } = await request.get(`${URL}/users`);
-              if (mounted.current) {
-                setUserData({userData: dataOfUser});
-              }
-            } catch (error) {
-              console.error(error);
-            }
-        }
-    }, []);
-
+export default function ProfileLoader({ id, pictureId, username }) {
     return (
         <div>
-            <div>Name: {userData.username}</div>
+            <img src="images/profile.png" style={{
+              height: '6.4rem',
+              width: '6.4rem',
+              borderRadius: '50%'
+            }} />
+            <div>Name: {username}</div>
         </div>
     );
 }
