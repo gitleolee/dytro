@@ -45,6 +45,9 @@ export default class Developer extends Component {
             Everybody in this country should learn to program a computer,
             because it teaches you how to think - Steve Jobs
           </p>
+          <p>
+            Code!
+          </p>
           <Link to="/developer/rgb">RGB</Link>
         </div>
       </div>
