@@ -4,6 +4,7 @@ import { URL } from '../../constants';
 import { socket } from '../../helpers/requestHelpers';
 import { css } from 'emotion';
 import PropTypes from 'prop-types';
+import Bounce from 'react-reveal/Bounce';
 
 export default class Chat extends Component {
   mounted = false;
@@ -56,7 +57,8 @@ export default class Chat extends Component {
     }
     return (
       <div>
-        <div
+      <Bounce left>
+      <div
           className={css`
             display: flex;
             flex-direction: column;
@@ -71,9 +73,7 @@ export default class Chat extends Component {
         <div id="chatlogs">
           <div>
             {messages.map((message, index) => (
-              <div key={message.id} style={{
-                marginLeft: '50rem'
-              }}>
+              <div key={message.id}>
                 <strong>{message.username}</strong>: {message.message}
               </div>
             ))}
@@ -93,13 +93,11 @@ export default class Chat extends Component {
             <input
               onChange={event => this.setState({ input: event.target.value })}
               value={input}
-              style={{
-                marginLeft: '50rem'
-              }}
               placeholder="Enter a message"
             />
           </form>
         </div>
+      </Bounce>
       </div>
     );
   }

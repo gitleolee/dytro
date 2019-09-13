@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
+import Fade from 'react-reveal/Fade';
 
 export default class About extends Component {
   render() {
@@ -41,25 +42,27 @@ export default class About extends Component {
           }
         `}
       >
+      <Fade left>
         <h1>About Dytro</h1>
-        <button className="accordion">About Website</button>
-        <div className="panel">
-          <p>
-            This website(www.dytro.net) is made in 2018. When I made this, I was
-            a 5th grader. This website is made with React.js!
-          </p>
-        </div>
-        <button className="accordion">About His Programming History</button>
-        <div className="panel">
-          <p>
-            He started <a href="https://www.scratch.com">Scratch</a> when he was
-            8 years old(9 years old in Korean). Then, he started to learn
-            HTML(HyperText Markup Language) and CSS(Cascading Style Sheet).
-            Then, he had learned JavaScript. He went to another programming
-            class, and he learned Java(Programming Language that Minecraft is
-            made with). He also learned C(Programming Language) there too.
-          </p>
-        </div>
+          <button className="accordion">About Website</button>
+          <div className="panel">
+            <p>
+              This website(www.dytro.net) is made in 2018. When I made this, I was
+              a 5th grader. This website is made with React.js!
+            </p>
+          </div>
+          <button className="accordion">About His Programming History</button>
+          <div className="panel">
+            <p>
+              He started <a href="https://www.scratch.com">Scratch</a> when he was
+              8 years old(9 years old in Korean). Then, he started to learn
+              HTML(HyperText Markup Language) and CSS(Cascading Style Sheet).
+              Then, he had learned JavaScript. He went to another programming
+              class, and he learned Java(Programming Language that Minecraft is
+              made with). He also learned C(Programming Language) there too.
+            </p>
+          </div>
+      </Fade>
       </div>
     );
   }
