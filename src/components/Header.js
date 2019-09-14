@@ -32,6 +32,10 @@ export default function Header({ onLogout, userId, username }) {
           color: aqua;
           margin-top: 0.1rem;
         }
+        .homeA {
+          margin-left: 3.8rem;
+          color: yellow;
+        }
       `}
     >
       <div
@@ -42,7 +46,7 @@ export default function Header({ onLogout, userId, username }) {
           }
         `}
       />
-      <Link to="/">Home</Link>
+      <Link className="homeA" to="/">Home</Link>
       <a
         target="_blank"
         rel="noopener noreferrer"

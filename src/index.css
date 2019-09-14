@@ -26,8 +26,8 @@ body {
   position: fixed;
   width: 36px;
   height: 30px;
-  left: 36px;
-  top: 36px;
+  left: 10px;
+  top: 16px;
 }
 
 /* Color/shape of burger icon bars */

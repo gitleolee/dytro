@@ -22,6 +22,10 @@ import WeightConverter from './components/Math/WeightConverter';
 import Download from './components/Download';
 import PageNotExisting from './components/SiteUtils/PageNotExisting';
 import HigherOrLower from './components/games/higherorlower';
+import Sidebar from './components/Sidebar';
+import Articles from './components/Articles';
+import CreateArticle from './components/Articles/CreateArticle';
+
 export default function App() {
   const [userId, setUserId] = useState(undefined);
   const [username, setUsername] = useState('');
@@ -65,6 +69,7 @@ export default function App() {
   return (
     <div className="App" style={{ background: 'white', marginTop: '4rem' }}>
       <Header userId={userId} username={username} onLogout={logout} />
+      <Sidebar />
       <Switch>
         <Route
           exact
@@ -81,6 +86,8 @@ export default function App() {
           path="/chat"
           component={() => <Chat username={username} userId={userId} />}
         />
+        <Route exact path="/articles" component={() => <Articles userId={userId} />} />
+        <Route exact path="/articles/create" component={() => <CreateArticle userId={userId} />} />
         <Route
           exact
           path="/profile"

@@ -1,4 +1,3 @@
-/* global localStorage, alert */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import request from 'axios';

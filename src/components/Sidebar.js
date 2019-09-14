@@ -12,8 +12,10 @@ export default function Sidebar() {
         }}
       >
         <Menu>
-        <Link to="/">Home</Link>
-          <Link to="/profile">Profile</Link>
+            <Link className="menu-item" to="/">Home</Link>
+            <Link className="menu-item" to="/developer">Developer</Link>
+            <Link className="menu-item" to="/articles">Articles</Link>
+            <Link className="menu-item" to="/profile">Profile</Link>
         </Menu>
       </div>
     </div>

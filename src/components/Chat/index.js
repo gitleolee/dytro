@@ -74,7 +74,22 @@ export default class Chat extends Component {
           <div>
             {messages.map((message, index) => (
               <div key={message.id}>
-                <strong>{message.username}</strong>: {message.message}
+                <img src="images/profile.png" style={{
+                height: '4.8rem',
+                width: '4.8rem',
+                borderRadius: '50%'
+                }}/>
+                <strong className={css`
+                  font-size: 1.21rem;
+                  color: gray;
+                `}>
+                {message.username}</strong>
+                <div className={css`
+                  font-size: 1.2rem;
+                  color: black;
+                  margin-top: 0.1rem;
+                  margin-bottom: 0.75rem;
+                `}>{message.message}</div>
               </div>
             ))}
             {/* hmm, mysql? */}
