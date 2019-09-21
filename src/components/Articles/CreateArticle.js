@@ -73,7 +73,7 @@ export default function CreateArticle({ userId }) {
                 userId: userId,
                 content: content
             });
-            window.location.href = '/articles';
+            window.location = '/articles';
         }
     }
 }

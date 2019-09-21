@@ -14,12 +14,17 @@ router.get('/', async(req, res) => {
 });
 
 router.post('/', async(req, res) => {
-  console.log(req.body);
-  await poolQuery(`INSERT INTO articles SET ?`, {
-    userId: req.body.userId,
-    name: req.body.name,
-    content: req.body.content
-  });
+  try {
+    console.log(req.body);
+    await poolQuery(`INSERT INTO articles SET ?`, {
+      userId: req.body.userId,
+      name: req.body.name,
+      content: req.body.content
+    });
+    res.send({ success: true });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;
