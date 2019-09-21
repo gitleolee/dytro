@@ -3,6 +3,7 @@ import { css } from 'emotion';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import request from 'axios';
+import { URL } from '../../constants';
 
 Articles.propTypes = {
     userId: PropTypes.number
@@ -18,8 +19,9 @@ export default function Articles({ userId }) {
         async function runWhenMounted() {
             try {
                 const {data: loadedArticle} = await request.get(`${URL}/articles`);
+                console.log('API:' + loadedArticle);
                 if (mounted.current) {
-                    setArticles({ articles: loadedArticle });
+                    setArticles(loadedArticle);
                 }
             } catch (error) {
                 console.error(error);

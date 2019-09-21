@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import PageNotExisting from '../SiteUtils/PageNotExisting';
 import Fade from 'react-reveal/Fade';
 import request from 'axios';
+import { URL } from '../../constants';
 
 CreateArticle.propTypes = {
     userId: PropTypes.number
@@ -69,7 +70,7 @@ export default function CreateArticle({ userId }) {
         if (!contentError && !nameError) {
             await request.post(`${URL}/articles`, {
                 name: name,
-                userid: userId,
+                userId: userId,
                 content: content
             });
             window.location.href = '/articles';
