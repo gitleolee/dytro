@@ -44,7 +44,7 @@
     "api-start": "nodemon api/index.js",
     "build": "react-scripts build",
     "start-server": "sudo forever -o out.log -e err.log start index.js",
-    "start-api-server": "PORT=443 sudo forever -o api/out.log -e api/err.log start api/index.js",
+    "start-api-server": "sudo forever -o api/out.log -e api/err.log start api/index.js",
     "stop-server": "sudo forever stop index.js",
     "stop-api-server": "sudo forever stop api/index.js",
     "test": "react-scripts test --env=jsdom",
