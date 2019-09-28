@@ -25,6 +25,7 @@ import HigherOrLower from './components/games/higherorlower';
 import Sidebar from './components/Sidebar';
 import Articles from './components/Articles';
 import CreateArticle from './components/Articles/CreateArticle';
+import ArticlePage from './components/Articles/ArticlePage';
 
 export default function App() {
   const [userId, setUserId] = useState(undefined);
@@ -88,6 +89,7 @@ export default function App() {
         />
         <Route exact path="/articles" component={() => <Articles userId={userId} />} />
         <Route exact path="/articles/create" component={() => <CreateArticle userId={userId} />} />
+        <Route path="/articles/link/:articleId" component={() => <ArticlePage />} />
         <Route
           exact
           path="/profile"
