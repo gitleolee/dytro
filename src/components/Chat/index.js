@@ -5,6 +5,7 @@ import { socket } from '../../helpers/requestHelpers';
 import { css } from 'emotion';
 import PropTypes from 'prop-types';
 import Bounce from 'react-reveal/Bounce';
+import { changeStringToEmojis } from '../../helpers/stringHelper';
 
 export default class Chat extends Component {
   mounted = false;
@@ -89,7 +90,7 @@ export default class Chat extends Component {
                   color: black;
                   margin-top: 0.1rem;
                   margin-bottom: 0.75rem;
-                `}>{message.message}</div>
+                `}>{changeStringToEmojis(message.message)}</div>
               </div>
             ))}
             {/* hmm, mysql? */}

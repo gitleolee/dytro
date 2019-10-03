@@ -39,4 +39,16 @@ router.get('/session', requireAuth, async(req, res) => {
   res.send({ userId: user.id, username: user.username, dytins: user.dytins });
 });
 
+router.get('/userexists', requireAuth, async(req, res) => {
+  const [user = null] = await poolQuery(
+    `SELECT id FROM users WHERE username = ?`,
+    req.query.username
+  );
+  if (user) {
+    res.send({ alreadyExists: true });
+  } else {
+    res.send({ alreadyExists: false });
+  }
+});
+
 module.exports = router;

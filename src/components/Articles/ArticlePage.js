@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 // import PropTypes from 'prop-types';
 import { css } from 'emotion';
 import request from 'axios';
+import { URL } from '../../constants';
 
 /*
 ArticlePage.propTypes = {
@@ -12,7 +13,7 @@ ArticlePage.propTypes = {
 // { match: { params: { articleId: initialArticleId } } }
 export default function ArticlePage() {
     // const [articleId, setArticleId] = useState(initialArticleId);
-    const [data, setData] = useState([]);
+    const [dataArticle, setDataArticle] = useState([]);
 
     let mounted = useRef(null);
 
@@ -21,10 +22,10 @@ export default function ArticlePage() {
         runWhenMounted();
         async function runWhenMounted() {
             try {
-                const {data: loadedArticle} = await request.get(`${URL}/articles/getdata?postId='1'`);
+                const {data: loadedArticle} = await request.get(`${URL}/articles/getdata?postId=1`);
                 console.log('API:' + loadedArticle);
                 if (mounted.current) {
-                    setData(loadedArticle);
+                    setDataArticle(loadedArticle);
                 }
             } catch (error) {
                 console.error(error);
@@ -39,8 +40,9 @@ export default function ArticlePage() {
             justify-content: center;
             align-items: center;
         `}>
-            <h1>{data.name} by Dytro</h1>
-            <p>{data.content}</p>
+            <h1>{dataArticle.name} by Dytro</h1>
+            <h1>{dataArticle.id} by Dytro</h1>
+            <p>{dataArticle.content}</p>
         </div>
     );
 }

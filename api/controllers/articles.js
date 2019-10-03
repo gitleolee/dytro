@@ -16,7 +16,7 @@ router.get('/', async(req, res) => {
 router.get('/getdata', async(req, res) => {
   try {
     const messages = await poolQuery(
-      `SELECT a.id, a.userId, a.content, a.name, b.username FROM articles a JOIN users b ON a.userId = b.id ORDER BY a.id WHERE a.id = ${Number(req.query.postId)}`
+      `SELECT a.id, a.userId, a.content, a.name, b.username FROM articles a JOIN users b ON a.userId = b.id WHERE a.id = ? ORDER BY a.id `, req.query.postId
     );
     res.send(messages);
   } catch (error) {

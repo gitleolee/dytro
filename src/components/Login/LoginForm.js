@@ -37,6 +37,10 @@ export default class LoginForm extends Component {
             width: 20rem;
             height: 25px;
           }
+          .invalid-feedback {
+                color: red;
+                font-size: 1.2rem;
+          }
         `}
       >
         <div>
@@ -46,6 +50,7 @@ export default class LoginForm extends Component {
             maxLength={15}
             value={username}
             onChange={onUsernameChange}
+            onSubmit={this.checkUsernameExists}
           />
           <br />
           <input

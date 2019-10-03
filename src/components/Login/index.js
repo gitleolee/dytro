@@ -119,9 +119,7 @@ export default class Login extends Component {
                   onPasswordChange={event =>
                     this.setState({ passwordInput: event.target.value })
                   }
-                  onUsernameChange={event =>
-                    this.setState({ usernameInput: event.target.value })
-                  }
+                  onUsernameChange={this.changeUsername}
                 />
               )}
             </div>
@@ -129,6 +127,10 @@ export default class Login extends Component {
         )}
       </div>
     );
+  }
+
+  changeUsername = async(event) => {
+    this.setState({ usernameInput: event.target.value });
   }
 
   login = async() => {
@@ -177,21 +179,8 @@ export default class Login extends Component {
           username: usernameInput,
           password: passwordInput
         });
-        /*
-          you can shorten the above
-
-          {
-            username: username,
-            password: password
-          }
-
-          into
-
-          { username, password }
-
-          try it!
-        */
-        if (alreadyExists) return alert('User already exists');
+        this.setState({userExists: alreadyExists});
+        if (this.state.userExists) return alert('User already exists!');
         localStorage.setItem('token', token);
         return onLogin({ userId, username: usernameInput });
       } catch (error) {
