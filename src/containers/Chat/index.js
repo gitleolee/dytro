@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import request from 'axios';
-import { URL } from '../../constants';
+import { URL } from '../../constants/URL';
 import { socket } from '../../helpers/requestHelpers';
 import { css } from 'emotion';
 import PropTypes from 'prop-types';
@@ -76,8 +76,7 @@ export default class Chat extends Component {
               {messages.map((message, index) => (
                 <div key={message.id}>
                   <img
-                    src="images/default.png"
-                    alt="Profile Pic"
+                    src="images/profile.png"
                     style={{
                       height: '4.8rem',
                       width: '4.8rem',

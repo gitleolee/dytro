@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 // import PropTypes from 'prop-types';
-import {css} from 'emotion';
+import { css } from 'emotion';
 import request from 'axios';
-import {URL} from '../../constants';
-import {useParams} from 'react-router';
+import { URL } from '../../constants/URL';
+import { useParams } from 'react-router';
 
 // { match: { params: { articleId: initialArticleId } } }
 export default function ArticlePage() {
@@ -11,14 +11,14 @@ export default function ArticlePage() {
   const [dataArticle, setDataArticle] = useState({});
 
   let mounted = useRef(null);
-  let {articleId} = useParams();
+  let { articleId } = useParams();
 
   useEffect(() => {
     mounted.current = true;
     runWhenMounted();
     async function runWhenMounted() {
       try {
-        const {data: loadedArticle} = await request.get(
+        const { data: loadedArticle } = await request.get(
           `${URL}/articles/getdata?postId=${articleId}`
         );
         if (mounted.current) {
@@ -29,7 +29,7 @@ export default function ArticlePage() {
       }
     }
   }, []);
-  const {name, content} = dataArticle;
+  const { name, content } = dataArticle;
   return (
     <div
       className={css`

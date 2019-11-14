@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
-import {css} from 'emotion';
+import React, { useState } from 'react';
+import { css } from 'emotion';
 import PropTypes from 'prop-types';
-import PageNotExisting from '../SiteUtils/PageNotExisting';
 import Fade from 'react-reveal/Fade';
 import request from 'axios';
-import {URL} from '../../constants';
+import { URL } from '../../constants/URL';
+import PageNotExisting from '../../components/SiteUtils/PageNotExisting';
 
 CreateArticle.propTypes = {
   userId: PropTypes.number
 };
 
-export default function CreateArticle({userId}) {
+export default function CreateArticle({ userId }) {
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
   let contentLen = 0;
@@ -63,12 +63,12 @@ export default function CreateArticle({userId}) {
         onChange={event =>
           event.target.value.length <= 36 && setName(event.target.value)
         }
-        placeholder='Insert Article Title Here!'
+        placeholder="Insert Article Title Here!"
       />
       <textarea
         value={content}
         onChange={event => setContent(event.target.value)}
-        placeholder='Insert Contents Here!'
+        placeholder="Insert Contents Here!"
       ></textarea>
       <div
         style={{
@@ -77,22 +77,22 @@ export default function CreateArticle({userId}) {
       >
         Genre:{' '}
         <select>
-          <option value='Science'>Science</option>
-          <option value='Math'>Math</option>
-          <option value='Travel & Food'>Travel & Food</option>
-          <option value='Music'>Music</option>
-          <option value='Other'>Other</option>
+          <option value="Science">Science</option>
+          <option value="Math">Math</option>
+          <option value="Travel & Food">Travel & Food</option>
+          <option value="Music">Music</option>
+          <option value="Other">Other</option>
         </select>
       </div>
 
       <button onClick={submitArticle}>Submit Article</button>
       <Fade bottom collapse when={nameError}>
-        <div className='invalid-feedback' style={{display: 'block'}}>
+        <div className="invalid-feedback" style={{ display: 'block' }}>
           Title too short!
         </div>
       </Fade>
       <Fade bottom collapse when={contentError}>
-        <div className='invalid-feedback' style={{display: 'block'}}>
+        <div className="invalid-feedback" style={{ display: 'block' }}>
           Content too short!
         </div>
       </Fade>

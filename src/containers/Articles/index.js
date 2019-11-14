@@ -1,15 +1,15 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {css} from 'emotion';
+import React, { useState, useEffect, useRef } from 'react';
+import { css } from 'emotion';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import request from 'axios';
-import {URL} from '../../constants';
+import { URL } from '../../constants/URL';
 
 Articles.propTypes = {
   userId: PropTypes.number
 };
 
-export default function Articles({userId}) {
+export default function Articles({ userId }) {
   const [articles, setArticles] = useState([]);
   let mounted = useRef(null);
 
@@ -18,7 +18,7 @@ export default function Articles({userId}) {
     runWhenMounted();
     async function runWhenMounted() {
       try {
-        const {data: loadedArticle} = await request.get(`${URL}/articles`);
+        const { data: loadedArticle } = await request.get(`${URL}/articles`);
         console.log('API:' + loadedArticle);
         if (mounted.current) {
           setArticles(loadedArticle);
@@ -58,11 +58,11 @@ export default function Articles({userId}) {
     >
       <h1>Articles</h1>
       {userId && (
-        <Link to='/articles/create' className='CreateAr'>
+        <Link to="/articles/create" className="CreateAr">
           Create Article
         </Link>
       )}
-      <div id='chatlogs'>
+      <div id="chatlogs">
         <div>
           {articles.map((article, index) => (
             <Link to={`/articles/link/${article.id}`} key={article.id}>

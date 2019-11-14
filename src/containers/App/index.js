@@ -1,35 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
-import Home from './components/Home';
-import Login from './components/Login';
-import Chat from './components/Chat';
+import Header from './Bars/Header';
+import Home from '../Home';
+import Login from '../Login';
+import Chat from '../Chat';
 import request from 'axios';
-import { socket } from './helpers/requestHelpers';
-import { URL } from './constants';
-import Minecraft from './components/minecraft';
-import MinecraftServer from './components/minecraft/Servers';
-import Developer from './components/Developer';
-import Games from './components/games';
-import About from './components/about';
-import RGB from './components/Developer/RGB';
-import Profile from './components/Profile';
-import Math from './components/Math';
-import Average3 from './components/Math/average';
-import TemperatureCoverter from './components/Math/TemperatureConverter';
-import Dytins from './components/Dytins';
-import WeightConverter from './components/Math/WeightConverter';
-import Download from './components/Download';
-import PageNotExisting from './components/SiteUtils/PageNotExisting';
-import HigherOrLower from './components/games/higherorlower';
-import Sidebar from './components/Sidebar';
-import Articles from './components/Articles';
-import CreateArticle from './components/Articles/CreateArticle';
-import ArticlePage from './components/Articles/ArticlePage';
-import BitCoins from './components/games/BitCoins';
-import ChatBot from './components/Developer/ChatBot';
-import Mafia from './components/Mafia';
-import Test from './components/Tools/Test';
+import { socket } from '../../helpers/requestHelpers';
+import { URL } from '../../constants/URL';
+import Minecraft from '../../components/minecraft';
+import MinecraftServer from '../../components/minecraft/Servers';
+import Games from '../../components/games';
+import About from '../../components/about';
+import Math from '../../components/Math';
+import Average3 from '../../components/Math/average';
+import TemperatureCoverter from '../../components/Math/TemperatureConverter';
+import Dytins from '../../components/Dytins';
+import WeightConverter from '../../components/Math/WeightConverter';
+import PageNotExisting from '../../components/SiteUtils/PageNotExisting';
+import HigherOrLower from '../../components/games/higherorlower';
+import Sidebar from './Bars/Sidebar';
+import Articles from '../Articles';
+import CreateArticle from '../../containers/Articles/CreateArticle';
+import ArticlePage from '../../containers/Articles/ArticlePage';
+import BitCoins from '../../components/games/BitCoins';
+import Mafia from '../../components/Mafia';
 
 export default function App() {
   const [userId, setUserId] = useState(undefined);
@@ -108,15 +102,8 @@ export default function App() {
         <Route path="/articles/link/:articleId">
           <ArticlePage />
         </Route>
-        <Route
-          exact
-          path="/developer/projects/chatbot"
-          component={() => <ChatBot />}
-        />
-        <Route path="/profile/:userid" component={() => <Profile />} />
         <Route exact path="/games/bitcoin" component={() => <BitCoins />} />
         <Route exact path="/math/average/3" component={() => <Average3 />} />
-        <Route exact path="/developer/rgb" component={() => <RGB />} />
         <Route exact path="/math" component={() => <Math />} />
         <Route
           exact
@@ -133,13 +120,7 @@ export default function App() {
           path="/math/weightconverter"
           component={() => <WeightConverter />}
         />
-        <Route
-          exact
-          path="/developer"
-          component={() => <Developer userId={userId} username={username} />}
-        />
         <Route exact path="/about" component={() => <About />} />
-        <Route exact path="/downloads" component={() => <Download />} />
         <Route exact path="/games/minecraft" component={() => <Minecraft />} />
         <Route
           exact
@@ -162,7 +143,6 @@ export default function App() {
             />
           )}
         />
-        <Route exact path="/test" component={() => <Test />} />
         <Route component={() => <PageNotExisting />} />
       </Switch>
     </div>

@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import { URL } from '../constants';
+import { URL } from '../constants/URL';
 
 export const token = () =>
   typeof localStorage !== 'undefined' ? localStorage.getItem('token') : null;

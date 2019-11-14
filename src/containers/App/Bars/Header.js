@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {css} from 'emotion';
-import {Link} from 'react-router-dom';
-import DropdownButton from './DropdownButton';
+import React, { useState } from 'react';
+import { css } from 'emotion';
+import { Link } from 'react-router-dom';
+import DropdownButton from '../../../components/Buttons/HoverDropdownButton';
 import PropTypes from 'prop-types';
 
 Header.propTypes = {
@@ -10,7 +10,7 @@ Header.propTypes = {
   onLogout: PropTypes.func.isRequired
 };
 
-export default function Header({onLogout, userId, username}) {
+export default function Header({ onLogout, userId, username }) {
   const [profileInfo] = useState(true);
   return (
     <div
@@ -27,16 +27,16 @@ export default function Header({onLogout, userId, username}) {
           margin-left: 1rem;
           font-size: 1.5rem;
           text-decoration: none;
-          color: #fff;
+          color: lightgray;
         }
         span {
           margin-left: 1rem;
           font-size: 1.5rem;
           text-decoration: none;
-          color: #fff;
+          color: lightgray;
         }
         a:hover {
-          color: aqua;
+          color: gray;
           margin-top: 0.1rem;
         }
         .homeA {
@@ -57,13 +57,13 @@ export default function Header({onLogout, userId, username}) {
           }
         `}
       />
-      <Link className='homeA' to='/'>
+      <Link className="homeA" to="/">
         Home
       </Link>
       <a
-        target='_blank'
-        rel='noopener noreferrer'
-        href='https://discord.gg/YPZ3RBy'
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://discord.gg/YPZ3RBy"
       >
         Discord
       </a>
@@ -108,10 +108,10 @@ export default function Header({onLogout, userId, username}) {
             font-size: 0.9rem;
           }
           a:hover {
-            color: aqua;
+            color: gray;
           }
           span:hover {
-            color: aqua;
+            color: gray;
           }
           .Logout {
             border-radius: 0px;
@@ -139,17 +139,25 @@ export default function Header({onLogout, userId, username}) {
             flex-direction: column;
           `}
         >
-          {!userId && <span className='Last'>Login to an account</span>}
+          {!userId && <span className="Last">Login to an account</span>}
           {userId && profileInfo && (
-            <DropdownButton onClick={logout} username={username} />
+            <DropdownButton
+              text={username}
+              insideUI={[
+                {
+                  onClick: logout,
+                  text: 'Log out'
+                }
+              ]}
+            />
           )}
         </div>
         {userId ? (
-          <Link to='/chat' className='green'>
+          <Link to="/chat" className="green">
             Talk
           </Link>
         ) : (
-          <Link to='/login' className='greenLogin'>
+          <Link to="/login" className="greenLogin">
             Login
           </Link>
         )}
