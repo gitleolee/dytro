@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { css } from 'emotion';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {css} from 'emotion';
+import {Link} from 'react-router-dom';
 import DropdownButton from './DropdownButton';
 import PropTypes from 'prop-types';
 
@@ -10,7 +10,7 @@ Header.propTypes = {
   onLogout: PropTypes.func.isRequired
 };
 
-export default function Header({ onLogout, userId, username }) {
+export default function Header({onLogout, userId, username}) {
   const [profileInfo] = useState(true);
   return (
     <div
@@ -18,11 +18,18 @@ export default function Header({ onLogout, userId, username }) {
         display: flex;
         align-items: center;
         height: 4rem;
-        background: rgb(50,50,50);
+        background: rgb(50, 50, 50);
         position: fixed;
         width: 100%;
         top: 0;
+        z-index: 1000;
         a {
+          margin-left: 1rem;
+          font-size: 1.5rem;
+          text-decoration: none;
+          color: #fff;
+        }
+        span {
           margin-left: 1rem;
           font-size: 1.5rem;
           text-decoration: none;
@@ -44,13 +51,19 @@ export default function Header({ onLogout, userId, username }) {
             margin-left: 1rem;
             text-decoration: none;
           }
+          span {
+            margin-left: 1rem;
+            text-decoration: none;
+          }
         `}
       />
-      <Link className="homeA" to="/">Home</Link>
+      <Link className='homeA' to='/'>
+        Home
+      </Link>
       <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://discord.gg/YPZ3RBy"
+        target='_blank'
+        rel='noopener noreferrer'
+        href='https://discord.gg/YPZ3RBy'
       >
         Discord
       </a>
@@ -59,10 +72,14 @@ export default function Header({ onLogout, userId, username }) {
           display: flex;
           align-items: center;
           height: 4rem;
-          background: rgb(50,50,50);
+          background: rgb(50, 50, 50);
           flex-direction: row-reverse;
           width: 100%;
           a {
+            margin-left: 1rem;
+            margin-right: 0rem;
+          }
+          span {
             margin-left: 1rem;
             margin-right: 0rem;
           }
@@ -93,6 +110,9 @@ export default function Header({ onLogout, userId, username }) {
           a:hover {
             color: aqua;
           }
+          span:hover {
+            color: aqua;
+          }
           .Logout {
             border-radius: 0px;
             width: 8rem;
@@ -119,17 +139,17 @@ export default function Header({ onLogout, userId, username }) {
             flex-direction: column;
           `}
         >
-          {!userId && <a className="Last">Login to an account</a>}
+          {!userId && <span className='Last'>Login to an account</span>}
           {userId && profileInfo && (
             <DropdownButton onClick={logout} username={username} />
           )}
         </div>
         {userId ? (
-          <Link to="/chat" className="green">
+          <Link to='/chat' className='green'>
             Talk
           </Link>
         ) : (
-          <Link to="/login" className="greenLogin">
+          <Link to='/login' className='greenLogin'>
             Login
           </Link>
         )}

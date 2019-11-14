@@ -1,11 +1,11 @@
-/* global localStorage, alert */
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import request from 'axios';
-import { URL } from '../../constants';
+import {URL} from '../../constants';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
-import { css } from 'emotion';
+import {css} from 'emotion';
+import background from './background.jpg';
 
 export default class Login extends Component {
   static propTypes = {
@@ -23,7 +23,7 @@ export default class Login extends Component {
   };
 
   render() {
-    const { userId, username } = this.props;
+    const {userId, username} = this.props;
     const {
       signupFormShown,
       usernameInput,
@@ -42,8 +42,11 @@ export default class Login extends Component {
         style={{
           display: 'flex',
           justifyContent: 'center',
-          height: 'auto',
-          overflow: 'hidden'
+          height: '100%',
+          width: 'auto',
+          overflow: 'hidden',
+          backgroundSize: 'cover',
+          backgroundImage: `url(${background})`
         }}
       >
         {userId && (
@@ -53,10 +56,10 @@ export default class Login extends Component {
           </div>
         )}
         {!userId && (
-          <div style={{ marginTop: '5rem' }}>
+          <div style={{marginTop: '5rem'}}>
             <div
               className={css`
-                a {
+                span {
                   cursor: pointer;
                   border-radius: 5%;
                 }
@@ -77,24 +80,24 @@ export default class Login extends Component {
               `}
             >
               {signupFormShown && (
-                <a
-                  className="another-account"
-                  onClick={() => this.setState({ signupFormShown: false })}
+                <span
+                  className='another-account'
+                  onClick={() => this.setState({signupFormShown: false})}
                 >
                   <strong>Login To An Account!</strong>
-                </a>
+                </span>
               )}
               {!signupFormShown && (
-                <a
-                  className="make-account"
-                  onClick={() => this.setState({ signupFormShown: true })}
+                <span
+                  className='make-account'
+                  onClick={() => this.setState({signupFormShown: true})}
                 >
                   <strong>Create New Account!</strong>
-                </a>
+                </span>
               )}
               <div />
             </div>
-            <div style={{ marginTop: '1rem' }}>
+            <div style={{marginTop: '1rem'}}>
               {signupFormShown ? (
                 <SignupForm
                   username={usernameInput}
@@ -102,13 +105,13 @@ export default class Login extends Component {
                   cpassword={cpasswordInput}
                   onSignup={this.signup}
                   onCPasswordChange={event =>
-                    this.setState({ cpasswordInput: event.target.value })
+                    this.setState({cpasswordInput: event.target.value})
                   }
                   onPasswordChange={event =>
-                    this.setState({ passwordInput: event.target.value })
+                    this.setState({passwordInput: event.target.value})
                   }
                   onUsernameChange={event =>
-                    this.setState({ usernameInput: event.target.value })
+                    this.setState({usernameInput: event.target.value})
                   }
                 />
               ) : (
@@ -117,7 +120,7 @@ export default class Login extends Component {
                   password={passwordInput}
                   onLogin={this.login}
                   onPasswordChange={event =>
-                    this.setState({ passwordInput: event.target.value })
+                    this.setState({passwordInput: event.target.value})
                   }
                   onUsernameChange={this.changeUsername}
                 />
@@ -129,36 +132,36 @@ export default class Login extends Component {
     );
   }
 
-  changeUsername = async(event) => {
-    this.setState({ usernameInput: event.target.value });
-  }
+  changeUsername = async event => {
+    this.setState({usernameInput: event.target.value});
+  };
 
-  login = async() => {
-    const { onLogin } = this.props;
-    const { usernameInput, passwordInput } = this.state;
+  login = async () => {
+    const {onLogin} = this.props;
+    const {usernameInput, passwordInput} = this.state;
     try {
       const {
-        data: { token, userId }
+        data: {token, userId}
       } = await request.get(
         `${URL}/users?username=${usernameInput}&password=${passwordInput}`
       );
       console.log(token);
       localStorage.setItem('token', token);
-      onLogin({ userId, username: usernameInput });
+      onLogin({userId, username: usernameInput});
     } catch (error) {
       console.error(error);
     }
   };
 
   logout = () => {
-    const { onLogout } = this.props;
+    const {onLogout} = this.props;
     localStorage.removeItem('token');
     onLogout();
   };
 
-  signup = async() => {
-    const { onLogin } = this.props;
-    const { usernameInput, passwordInput, cpasswordInput } = this.state;
+  signup = async () => {
+    const {onLogin} = this.props;
+    const {usernameInput, passwordInput, cpasswordInput} = this.state;
     if (usernameInput.length < 3) {
       alert('Username have to be at least 3 characters');
       return;
@@ -174,7 +177,7 @@ export default class Login extends Component {
     ) {
       try {
         const {
-          data: { alreadyExists, token, userId }
+          data: {alreadyExists, token, userId}
         } = await request.post(`${URL}/users`, {
           username: usernameInput,
           password: passwordInput
@@ -182,7 +185,7 @@ export default class Login extends Component {
         this.setState({userExists: alreadyExists});
         if (this.state.userExists) return alert('User already exists!');
         localStorage.setItem('token', token);
-        return onLogin({ userId, username: usernameInput });
+        return onLogin({userId, username: usernameInput});
       } catch (error) {
         return console.error(error);
       }
@@ -190,7 +193,7 @@ export default class Login extends Component {
     alert('passwords do not match!');
   };
 
-  passwordMatches = ({ cpassword, password }) => {
+  passwordMatches = ({cpassword, password}) => {
     if (cpassword === password) {
       return true;
     } else if (cpassword !== password) {

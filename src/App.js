@@ -26,6 +26,10 @@ import Sidebar from './components/Sidebar';
 import Articles from './components/Articles';
 import CreateArticle from './components/Articles/CreateArticle';
 import ArticlePage from './components/Articles/ArticlePage';
+import BitCoins from './components/games/BitCoins';
+import ChatBot from './components/Developer/ChatBot';
+import Mafia from './components/Mafia';
+import Test from './components/Tools/Test';
 
 export default function App() {
   const [userId, setUserId] = useState(undefined);
@@ -68,7 +72,10 @@ export default function App() {
     }
   });
   return (
-    <div className="App" style={{ background: 'white', marginTop: '4rem' }}>
+    <div
+      className="App"
+      style={{ background: 'white', marginTop: '4rem', height: '100%' }}
+    >
       <Header userId={userId} username={username} onLogout={logout} />
       <Sidebar />
       <Switch>
@@ -87,14 +94,27 @@ export default function App() {
           path="/chat"
           component={() => <Chat username={username} userId={userId} />}
         />
-        <Route exact path="/articles" component={() => <Articles userId={userId} />} />
-        <Route exact path="/articles/create" component={() => <CreateArticle userId={userId} />} />
-        <Route path="/articles/link/:articleId" component={() => <ArticlePage />} />
+        <Route exact path="/mafia" component={() => <Mafia />} />
         <Route
           exact
-          path="/profile"
-          component={() => <Profile username={username} />}
+          path="/articles"
+          component={() => <Articles userId={userId} />}
         />
+        <Route
+          exact
+          path="/articles/create"
+          component={() => <CreateArticle userId={userId} />}
+        />
+        <Route path="/articles/link/:articleId">
+          <ArticlePage />
+        </Route>
+        <Route
+          exact
+          path="/developer/projects/chatbot"
+          component={() => <ChatBot />}
+        />
+        <Route path="/profile/:userid" component={() => <Profile />} />
+        <Route exact path="/games/bitcoin" component={() => <BitCoins />} />
         <Route exact path="/math/average/3" component={() => <Average3 />} />
         <Route exact path="/developer/rgb" component={() => <RGB />} />
         <Route exact path="/math" component={() => <Math />} />
@@ -142,6 +162,7 @@ export default function App() {
             />
           )}
         />
+        <Route exact path="/test" component={() => <Test />} />
         <Route component={() => <PageNotExisting />} />
       </Switch>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'emotion';
+import {css} from 'emotion';
 
 export default class SignupForm extends React.Component {
   // do you notice the difference between the way I defined this class and the way I defined the classes for other components? Here it says React.Component, but in other components, just Component. But they both work the same way.
@@ -42,28 +42,34 @@ export default class SignupForm extends React.Component {
             width: 20rem;
             height: 25px;
           }
+          button {
+            background: lime;
+            color: white;
+            width: 8rem;
+            height: 4rem;
+          }
         `}
       >
         <div>
           <input
-            placeholder="Username"
-            type="text"
+            placeholder='Username'
+            type='text'
             maxLength={15}
             value={username}
             onChange={onUsernameChange}
           />
           <br />
           <input
-            placeholder="Password"
-            type="password"
+            placeholder='Password'
+            type='password'
             maxLength={10}
             value={password}
             onChange={onPasswordChange}
           />
           <br />
           <input
-            placeholder="Confirm Password"
-            type="password"
+            placeholder='Confirm Password'
+            type='password'
             maxLength={10}
             value={cpassword}
             onChange={onCPasswordChange}
@@ -71,7 +77,7 @@ export default class SignupForm extends React.Component {
         </div>
         <div>
           <button
-            style={{ marginTop: '1rem', padding: '1rem', fontSize: '1.5rem' }}
+            style={{marginTop: '1rem', padding: '1rem', fontSize: '1.5rem'}}
             onClick={onSignup}
           >
             Sign Up!

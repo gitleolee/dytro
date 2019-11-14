@@ -58,62 +58,73 @@ export default class Chat extends Component {
     }
     return (
       <div>
-      <Bounce left>
-      <div
-          className={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: gray;
-            font-size: 2.4rem;
-          `}
-        >
-          Chat Starts Here!
-        </div>
-        <div id="chatlogs">
-          <div>
-            {messages.map((message, index) => (
-              <div key={message.id}>
-                <img src="images/profile.png" style={{
-                height: '4.8rem',
-                width: '4.8rem',
-                borderRadius: '50%'
-                }}/>
-                <strong className={css`
-                  font-size: 1.21rem;
-                  color: gray;
-                `}>
-                {message.username}</strong>
-                <div className={css`
-                  font-size: 1.2rem;
-                  color: black;
-                  margin-top: 0.1rem;
-                  margin-bottom: 0.75rem;
-                `}>{changeStringToEmojis(message.message)}</div>
-              </div>
-            ))}
-            {/* hmm, mysql? */}
+        <Bounce left>
+          <div
+            className={css`
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              color: gray;
+              font-size: 2.4rem;
+            `}
+          >
+            Chat Starts Here!
           </div>
-        </div>
-        <div
-          id="Chatting"
-          className={css`
-            input {
-              width: 30%;
-              font-size: 1.6rem;
-            }
-          `}
-        >
-          <form onSubmit={this.onSubmit}>
-            <input
-              onChange={event => this.setState({ input: event.target.value })}
-              value={input}
-              placeholder="Enter a message"
-            />
-          </form>
-        </div>
-      </Bounce>
+          <div id="chatlogs">
+            <div>
+              {messages.map((message, index) => (
+                <div key={message.id}>
+                  <img
+                    src="images/default.png"
+                    alt="Profile Pic"
+                    style={{
+                      height: '4.8rem',
+                      width: '4.8rem',
+                      borderRadius: '50%'
+                    }}
+                  />
+                  <strong
+                    className={css`
+                      font-size: 1.21rem;
+                      color: gray;
+                    `}
+                  >
+                    {message.username}
+                  </strong>
+                  <div
+                    className={css`
+                      font-size: 1.2rem;
+                      color: black;
+                      margin-top: 0.1rem;
+                      margin-bottom: 0.75rem;
+                    `}
+                  >
+                    {changeStringToEmojis(message.message)}
+                  </div>
+                </div>
+              ))}
+              {/* hmm, mysql? */}
+            </div>
+          </div>
+          <div
+            id="Chatting"
+            className={css`
+              input {
+                width: 30%;
+                font-size: 1.6rem;
+              }
+            `}
+          >
+            <form onSubmit={this.onSubmit}>
+              <input
+                onChange={event => this.setState({ input: event.target.value })}
+                value={input}
+                placeholder="Enter a message"
+              />
+            </form>
+          </div>
+        </Bounce>
       </div>
     );
   }
